@@ -1,0 +1,438 @@
+-- ============================================================
+--                    Redis 持久化与集群
+-- ============================================================
+-- 包含：RDB、AOF、主从复制、哨兵、集群
+-- ============================================================
+
+-- ============================================================
+--                    一、RDB 持久化
+-- ============================================================
+
+-- RDB（Redis Database）：将内存数据快照保存到磁盘
+
+-- 手动触发 RDB
+SAVE                            -- 同步保存（阻塞）
+BGSAVE                          -- 后台保存（fork 子进程）
+
+-- 查看最后一次保存时间
+LASTSAVE
+
+-- RDB 配置（redis.conf）
+/*
+# 保存策略：900 秒内有 1 次修改则保存
+save 900 1
+save 300 10
+save 60 10000
+
+# 禁用 RDB
+# save ""
+
+# RDB 文件名
+dbfilename dump.rdb
+
+# RDB 文件路径
+dir /var/lib/redis/
+
+# RDB 压缩
+rdbcompression yes
+
+# RDB 校验
+rdbchecksum yes
+
+# 子进程写入失败时是否停止接收写入
+stop-writes-on-bgsave-error yes
+*/
+
+-- RDB 优点：
+-- 1. 紧凑的二进制文件，适合备份
+-- 2. 恢复速度快
+-- 3. 对性能影响小（fork 子进程）
+
+-- RDB 缺点：
+-- 1. 可能丢失最后一次快照后的数据
+-- 2. fork 时可能造成短暂停顿（数据量大时）
+
+-- ============================================================
+--                    二、AOF 持久化
+-- ============================================================
+
+-- AOF（Append Only File）：记录每个写操作命令
+
+-- AOF 配置（redis.conf）
+/*
+# 开启 AOF
+appendonly yes
+
+# AOF 文件名
+appendfilename "appendonly.aof"
+
+# 同步策略
+# always: 每次写入都同步（最安全，最慢）
+# everysec: 每秒同步一次（默认，推荐）
+# no: 由操作系统决定（最快，可能丢失数据）
+appendfsync everysec
+
+# 重写时是否同步
+no-appendfsync-on-rewrite no
+
+# 自动重写触发条件
+auto-aof-rewrite-percentage 100    # 比上次重写后大 100%
+auto-aof-rewrite-min-size 64mb     # 最小 64MB 才重写
+
+# AOF 加载时是否忽略错误
+aof-load-truncated yes
+
+# 使用 RDB+AOF 混合持久化（Redis 4.0+）
+aof-use-rdb-preamble yes
+*/
+
+-- 手动触发 AOF 重写
+BGREWRITEAOF
+
+-- AOF 文件修复
+-- redis-check-aof --fix appendonly.aof
+
+-- AOF 优点：
+-- 1. 数据安全性高（最多丢失 1 秒数据）
+-- 2. 文件可读，便于理解和恢复
+-- 3. 自动重写压缩
+
+-- AOF 缺点：
+-- 1. 文件体积比 RDB 大
+-- 2. 恢复速度比 RDB 慢
+-- 3. 写入性能略低于 RDB
+
+-- ============================================================
+--                    三、混合持久化（Redis 4.0+）
+-- ============================================================
+
+-- 混合持久化结合 RDB 和 AOF 的优点
+-- AOF 重写时，先写入 RDB 格式的数据，再追加重写期间的增量 AOF
+
+/*
+配置：
+aof-use-rdb-preamble yes
+*/
+
+-- 文件结构：
+-- [RDB 格式的全量数据][AOF 格式的增量数据]
+
+-- 优点：
+-- 1. 恢复速度快（大部分是 RDB）
+-- 2. 数据安全（AOF 记录增量）
+
+-- ============================================================
+--                    四、主从复制
+-- ============================================================
+
+-- 设置主从关系（在从节点执行）
+REPLICAOF 192.168.1.100 6379    -- Redis 5.0+ 新命令
+-- 或
+SLAVEOF 192.168.1.100 6379      -- 旧命令（仍可用）
+
+-- 取消主从关系
+REPLICAOF NO ONE
+
+-- 查看复制状态
+INFO replication
+
+-- 从节点配置（redis.conf）
+/*
+# 主节点地址
+replicaof 192.168.1.100 6379
+
+# 主节点密码
+masterauth your_password
+
+# 从节点只读
+replica-read-only yes
+
+# 从节点是否响应过期数据（等待主节点删除命令）
+replica-serve-stale-data yes
+
+# 复制积压缓冲区大小
+repl-backlog-size 1mb
+
+# 无盘复制（直接通过网络传输 RDB）
+repl-diskless-sync no
+repl-diskless-sync-delay 5
+*/
+
+-- 主从复制原理：
+-- 1. 全量复制（初次连接或积压缓冲区不足）
+--    - 主节点 BGSAVE 生成 RDB
+--    - 发送 RDB 到从节点
+--    - 从节点加载 RDB
+--    - 主节点发送积压缓冲区的命令
+--
+-- 2. 增量复制（正常运行时）
+--    - 主节点将写命令发送到从节点
+--    - 从节点执行命令
+
+-- 复制偏移量
+-- 主从节点各自维护偏移量（offset）
+-- 用于断线重连时的增量同步
+
+-- ============================================================
+--                    五、哨兵（Sentinel）
+-- ============================================================
+
+-- 哨兵用于监控主从集群，实现自动故障转移
+
+-- 哨兵配置（sentinel.conf）
+/*
+# 监控的主节点
+sentinel monitor mymaster 192.168.1.100 6379 2
+
+# 主节点密码
+sentinel auth-pass mymaster your_password
+
+# 主节点多久无响应判定为主观下线
+sentinel down-after-milliseconds mymaster 30000
+
+# 故障转移超时时间
+sentinel failover-timeout mymaster 180000
+
+# 同时同步的从节点数量
+sentinel parallel-syncs mymaster 1
+*/
+
+-- 启动哨兵
+-- redis-sentinel /path/to/sentinel.conf
+-- 或
+-- redis-server /path/to/sentinel.conf --sentinel
+
+-- 哨兵命令
+SENTINEL MASTER mymaster        -- 主节点信息
+SENTINEL SLAVES mymaster        -- 从节点信息
+SENTINEL SENTINELS mymaster     -- 其他哨兵信息
+SENTINEL GET-MASTER-ADDR-BY-NAME mymaster  -- 获取主节点地址
+SENTINEL FAILOVER mymaster      -- 手动故障转移
+
+-- 哨兵工作原理：
+-- 1. 监控：定期 PING 主从节点
+-- 2. 通知：发现故障时通知管理员
+-- 3. 自动故障转移：
+--    - 主观下线：单个哨兵认为节点下线
+--    - 客观下线：多数哨兵（quorum）同意
+--    - 选举领导者哨兵执行故障转移
+--    - 选择新主节点（优先级、偏移量、runid）
+--    - 通知从节点复制新主节点
+--    - 更新配置
+
+-- ============================================================
+--                    六、Redis Cluster
+-- ============================================================
+
+-- Redis Cluster 是官方的分布式解决方案
+-- 特点：数据分片、去中心化、自动故障转移
+
+-- 集群配置（redis.conf）
+/*
+# 开启集群模式
+cluster-enabled yes
+
+# 集群配置文件
+cluster-config-file nodes.conf
+
+# 节点超时时间
+cluster-node-timeout 15000
+
+# 从节点有效因子
+cluster-replica-validity-factor 10
+
+# 是否要求所有槽都有节点才能服务
+cluster-require-full-coverage yes
+*/
+
+-- 创建集群（Redis 5.0+ 使用 redis-cli）
+-- redis-cli --cluster create 192.168.1.1:6379 192.168.1.2:6379 192.168.1.3:6379 192.168.1.4:6379 192.168.1.5:6379 192.168.1.6:6379 --cluster-replicas 1
+
+-- 集群命令
+CLUSTER INFO                    -- 集群状态
+CLUSTER NODES                   -- 节点列表
+CLUSTER SLOTS                   -- 槽分配情况
+CLUSTER KEYSLOT mykey           -- 计算键的槽位
+
+-- 槽位管理
+CLUSTER ADDSLOTS 0 1 2 3        -- 分配槽位
+CLUSTER DELSLOTS 0 1 2 3        -- 删除槽位
+CLUSTER SETSLOT 100 NODE nodeid -- 将槽分配给指定节点
+CLUSTER SETSLOT 100 MIGRATING nodeid  -- 迁移中
+CLUSTER SETSLOT 100 IMPORTING nodeid  -- 导入中
+CLUSTER SETSLOT 100 STABLE      -- 结束迁移
+
+-- 节点管理
+CLUSTER MEET 192.168.1.7 6379   -- 添加节点
+CLUSTER FORGET nodeid           -- 移除节点
+CLUSTER REPLICATE nodeid        -- 设为从节点
+CLUSTER FAILOVER                -- 手动故障转移
+
+-- 添加新节点
+-- redis-cli --cluster add-node 192.168.1.7:6379 192.168.1.1:6379
+-- 添加为从节点
+-- redis-cli --cluster add-node 192.168.1.8:6379 192.168.1.1:6379 --cluster-slave --cluster-master-id nodeid
+
+-- 重新分片
+-- redis-cli --cluster reshard 192.168.1.1:6379
+
+-- 检查集群
+-- redis-cli --cluster check 192.168.1.1:6379
+
+-- 修复集群
+-- redis-cli --cluster fix 192.168.1.1:6379
+
+-- ============================================================
+--                    七、Cluster 数据分片
+-- ============================================================
+
+-- Redis Cluster 使用哈希槽（Hash Slot）分片
+-- 共 16384 个槽（0-16383）
+-- 每个键通过 CRC16(key) % 16384 计算槽位
+
+-- 槽位计算
+CLUSTER KEYSLOT user:1001       -- 返回槽位号
+
+-- 哈希标签（Hash Tag）
+-- 使用 {} 指定用于计算槽位的部分
+-- 确保相关的键在同一个槽
+SET user:{1001}:name "Alice"
+SET user:{1001}:age "25"
+-- 两个键都根据 "1001" 计算槽位，会在同一个节点
+
+-- 跨槽操作限制
+-- 多键操作只能在同一个槽内执行
+MGET key1 key2 key3             -- 如果不在同一个槽会报错
+
+-- 使用哈希标签解决
+MGET {user}:key1 {user}:key2 {user}:key3  -- 同一个槽
+
+-- ============================================================
+--                    八、Cluster 故障转移
+-- ============================================================
+
+-- 自动故障转移流程：
+-- 1. 节点 A 无法联系主节点 B
+-- 2. A 标记 B 为 PFAIL（可能失败）
+-- 3. A 向其他节点广播 PFAIL
+-- 4. 当多数主节点都标记 B 为 PFAIL 时，标记为 FAIL
+-- 5. B 的从节点开始故障转移
+-- 6. 从节点通过 Raft 选举成为新主节点
+-- 7. 新主节点广播 PONG，宣布接管
+
+-- 手动故障转移（在从节点执行）
+CLUSTER FAILOVER                -- 优雅切换
+CLUSTER FAILOVER FORCE          -- 强制切换（不等待主节点）
+CLUSTER FAILOVER TAKEOVER       -- 强制接管（不需要选举）
+
+-- ============================================================
+--                    九、生产环境建议
+-- ============================================================
+
+/*
+1. 持久化策略
+   - 生产环境同时开启 RDB 和 AOF
+   - 使用混合持久化（Redis 4.0+）
+   - AOF 使用 everysec 同步策略
+
+2. 内存管理
+   - 设置 maxmemory 限制
+   - 选择合适的淘汰策略
+   - 监控内存使用
+
+3. 高可用架构
+   - 单机：主从 + 哨兵（至少 3 个哨兵）
+   - 集群：至少 3 主 3 从
+
+4. 安全配置
+   - 设置密码（requirepass）
+   - 绑定内网 IP（bind）
+   - 禁用危险命令（rename-command）
+   - 启用 TLS/SSL
+
+5. 监控告警
+   - 监控内存使用
+   - 监控连接数
+   - 监控慢查询
+   - 监控复制延迟
+
+6. 备份策略
+   - 定期备份 RDB 文件
+   - 异地备份
+   - 定期恢复测试
+*/
+
+-- ============================================================
+--                    十、配置参数速查
+-- ============================================================
+
+/*
+# 网络
+bind 127.0.0.1
+port 6379
+timeout 0
+tcp-keepalive 300
+protected-mode yes
+
+# 通用
+daemonize yes
+pidfile /var/run/redis_6379.pid
+loglevel notice
+logfile /var/log/redis/redis.log
+databases 16
+
+# 安全
+requirepass your_password
+rename-command FLUSHALL ""
+rename-command CONFIG ""
+
+# 内存
+maxmemory 4gb
+maxmemory-policy allkeys-lru
+maxmemory-samples 5
+
+# RDB
+save 900 1
+save 300 10
+save 60 10000
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump.rdb
+dir /var/lib/redis/
+
+# AOF
+appendonly yes
+appendfilename "appendonly.aof"
+appendfsync everysec
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+aof-use-rdb-preamble yes
+
+# 复制
+replicaof <masterip> <masterport>
+masterauth <master-password>
+replica-read-only yes
+repl-backlog-size 1mb
+repl-backlog-ttl 3600
+
+# 集群
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 15000
+cluster-require-full-coverage yes
+
+# 慢查询
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+
+# 客户端
+maxclients 10000
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit replica 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+
+# Lua
+lua-time-limit 5000
+*/
