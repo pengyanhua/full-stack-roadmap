@@ -224,6 +224,7 @@ function generateSimpleMarkdown(content, filename, ext) {
       const cleanDoc = docstring
         .replace(/^[=\-]{20,}\s*/gm, '')  // 移除分隔线
         .replace(/\s*[=\-]{20,}$/gm, '')
+        .replace(/<([a-zA-Z\u4e00-\u9fa5]+)>/g, '`<$1>`')  // 转义占位符为代码
         .trim()
 
       if (cleanDoc) {
@@ -246,6 +247,7 @@ function generateSimpleMarkdown(content, filename, ext) {
         .replace(/^\s*\*\s?/gm, '')  // 移除每行开头的 *
         .replace(/^[=\-]{20,}\s*/gm, '')  // 移除分隔线
         .replace(/\s*[=\-]{20,}$/gm, '')
+        .replace(/<([a-zA-Z\u4e00-\u9fa5]+)>/g, '`<$1>`')  // 转义占位符为代码
         .trim()
 
       if (docstring) {
