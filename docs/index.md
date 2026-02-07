@@ -179,6 +179,21 @@ javac Java/01-basics/Variables.java && java Variables
 - 完善文档和示例
 - 分享学习心得
 
+<div style="margin: 40px 0; text-align: center;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8985125275559714"
+     crossorigin="anonymous"></script>
+<!-- t.tecfav.com-首页底部 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8985125275559714"
+     data-ad-slot="3922057699"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
 ## 📄 许可证
 
 本项目采用 [MIT 许可证](https://github.com/pengyanhua/full-stack-roadmap/blob/main/LICENSE)。
