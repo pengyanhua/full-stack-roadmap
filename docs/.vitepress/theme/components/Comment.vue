@@ -6,13 +6,13 @@
     </div>
     <Giscus
       repo="pengyanhua/full-stack-roadmap"
-      repo-id="R_kgDONd3yOA"
+      repo-id="R_kgDORJb30g"
       category="General"
-      category-id="DIC_kwDONd3yOM4ClXkK"
+      category-id="DIC_kwDORJb30s4C2AFt"
       mapping="pathname"
       strict="0"
       reactions-enabled="1"
-      emit-metadata="0"
+      emit-metadata="1"
       input-position="top"
       :theme="giscusTheme"
       lang="zh-CN"
