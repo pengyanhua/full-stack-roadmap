@@ -1,0 +1,27 @@
+# robots.txt for https://t.tecfav.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://t.tecfav.com/sitemap.xml
+
+# Crawl delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow admin paths (if any)
+# Disallow: /admin/
+# Disallow: /_/
+
+# Allow all search engines to index
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Yandex
+Allow: /

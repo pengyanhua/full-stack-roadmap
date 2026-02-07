@@ -3,18 +3,89 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "全栈开发学习路线",
-  description: "从基础到进阶的全栈学习资源，涵盖编程语言、框架、数据库、系统架构和数据结构",
+  titleTemplate: ':title - 全栈开发技术文档',
+  description: "从基础到进阶的全栈学习资源，涵盖 Python、Go、Java、JavaScript、React、Vue、系统架构、微服务、云原生、DevOps、数据库等 230+ 篇技术文档，提供完整的编程语言、框架、数据库、系统架构学习路径",
   lang: 'zh-CN',
 
   // Head 配置
   head: [
+    // Favicon
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/logo.svg' }],
+    ['link', { rel: 'apple-touch-icon', href: '/logo.svg' }],
+
+    // SEO Meta Tags
+    ['meta', { name: 'keywords', content: 'Python, Go, Java, JavaScript, React, Vue, 全栈开发, 系统架构, 微服务, 云原生, DevOps, 数据库, Redis, MySQL, Kafka, 学习路线, 编程教程' }],
+    ['meta', { name: 'author', content: '全栈开发学习路线' }],
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['meta', { name: 'googlebot', content: 'index, follow' }],
     ['meta', { name: 'theme-color', content: '#4F46E5' }],
-    ['meta', { name: 'og:type', content: 'website' }],
-    ['meta', { name: 'og:locale', content: 'zh_CN' }],
-    ['meta', { name: 'og:site_name', content: '全栈开发学习路线' }],
-    ['meta', { name: 'og:image', content: 'https://t.tecfav.com/logo.svg' }]
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+
+    // Canonical URL
+    ['link', { rel: 'canonical', href: 'https://t.tecfav.com/' }],
+
+    // Open Graph / Facebook
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:url', content: 'https://t.tecfav.com/' }],
+    ['meta', { property: 'og:site_name', content: '全栈开发学习路线' }],
+    ['meta', { property: 'og:title', content: '全栈开发学习路线 - 从基础到进阶的完整技术栈' }],
+    ['meta', { property: 'og:description', content: '涵盖 Python、Go、Java、JavaScript、React、Vue、系统架构、微服务、云原生、DevOps、数据库等 230+ 篇技术文档，帮助你系统学习全栈开发' }],
+    ['meta', { property: 'og:image', content: 'https://t.tecfav.com/logo.svg' }],
+    ['meta', { property: 'og:image:width', content: '1200' }],
+    ['meta', { property: 'og:image:height', content: '630' }],
+    ['meta', { property: 'og:locale', content: 'zh_CN' }],
+
+    // Twitter Card
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: '全栈开发学习路线 - 从基础到进阶的完整技术栈' }],
+    ['meta', { name: 'twitter:description', content: '涵盖 Python、Go、Java、JavaScript、React、Vue、系统架构、微服务、云原生、DevOps、数据库等 230+ 篇技术文档' }],
+    ['meta', { name: 'twitter:image', content: 'https://t.tecfav.com/logo.svg' }],
+
+    // Structured Data (JSON-LD)
+    ['script', { type: 'application/ld+json' }, JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: '全栈开发学习路线',
+      url: 'https://t.tecfav.com',
+      description: '从基础到进阶的全栈学习资源，涵盖编程语言、框架、数据库、系统架构和数据结构',
+      inLanguage: 'zh-CN',
+      author: {
+        '@type': 'Organization',
+        name: '全栈开发学习路线'
+      },
+      provider: {
+        '@type': 'Organization',
+        name: '全栈开发学习路线',
+        url: 'https://t.tecfav.com'
+      }
+    })],
+    ['script', { type: 'application/ld+json' }, JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Course',
+      name: '全栈开发学习路线',
+      description: '涵盖 Python、Go、Java、JavaScript、React、Vue、系统架构、微服务、云原生、DevOps 等完整技术栈的学习资源',
+      provider: {
+        '@type': 'Organization',
+        name: '全栈开发学习路线'
+      },
+      educationalLevel: '从基础到高级',
+      inLanguage: 'zh-CN',
+      teaches: [
+        'Python 编程',
+        'Go 编程',
+        'Java 编程',
+        'JavaScript 编程',
+        'React 框架',
+        'Vue 框架',
+        '系统架构设计',
+        '微服务架构',
+        '云原生',
+        'DevOps',
+        '数据库',
+        '数据结构'
+      ]
+    })]
   ],
 
   // 忽略死链接（用于还未创建的页面）
