@@ -19,10 +19,65 @@ const MODULES = {
     dest: 'docs/architecture',
     type: 'markdown'  // 系统架构文档
   },
+  'Cloud_Native': {
+    source: 'Cloud_Native',
+    dest: 'docs/cloud-native',
+    type: 'markdown'
+  },
+  'DevOps': {
+    source: 'DevOps',
+    dest: 'docs/devops',
+    type: 'markdown'
+  },
+  'API_Gateway': {
+    source: 'API_Gateway',
+    dest: 'docs/api-gateway',
+    type: 'markdown'
+  },
+  'DDD': {
+    source: 'DDD',
+    dest: 'docs/ddd',
+    type: 'markdown'
+  },
+  'Performance': {
+    source: 'Performance',
+    dest: 'docs/performance',
+    type: 'markdown'
+  },
+  'Governance': {
+    source: 'Governance',
+    dest: 'docs/governance',
+    type: 'markdown'
+  },
+  'Data_Architecture': {
+    source: 'Data_Architecture',
+    dest: 'docs/data-architecture',
+    type: 'markdown'
+  },
+  'Security_Advanced': {
+    source: 'Security_Advanced',
+    dest: 'docs/security',
+    type: 'markdown'
+  },
+  'BigData': {
+    source: 'BigData',
+    dest: 'docs/bigdata',
+    type: 'markdown'
+  },
+  'AI_Architecture': {
+    source: 'AI_Architecture',
+    dest: 'docs/ai-architecture',
+    type: 'markdown'
+  },
+  'Soft_Skills': {
+    source: 'Soft_Skills',
+    dest: 'docs/soft-skills',
+    type: 'markdown'
+  },
   'Container': {
     source: 'Container',
     dest: 'docs/container',
-    type: 'markdown'  // 直接复制 Markdown
+    type: 'markdown'
   },
   'Elasticsearch': {
     source: 'Elasticsearch',

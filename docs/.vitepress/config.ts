@@ -59,15 +59,37 @@ export default defineConfig({
       },
       {
         text: '系统架构',
-        link: '/architecture/'
+        items: [
+          { text: '架构设计', link: '/architecture/' },
+          { text: 'DDD', link: '/ddd/' },
+          { text: 'API 网关', link: '/api-gateway/' },
+          { text: '性能优化', link: '/performance/' },
+          { text: '技术治理', link: '/governance/' },
+        ]
       },
       {
-        text: '数据结构',
-        link: '/datastructures/'
+        text: '云原生&DevOps',
+        items: [
+          { text: '云原生', link: '/cloud-native/' },
+          { text: 'DevOps', link: '/devops/' },
+          { text: '容器化', link: '/container/' },
+        ]
       },
       {
-        text: '容器化',
-        link: '/container/'
+        text: '数据&AI',
+        items: [
+          { text: '数据架构', link: '/data-architecture/' },
+          { text: '大数据', link: '/bigdata/' },
+          { text: 'AI 架构', link: '/ai-architecture/' },
+        ]
+      },
+      {
+        text: '其他',
+        items: [
+          { text: '数据结构', link: '/datastructures/' },
+          { text: '安全', link: '/security/' },
+          { text: '软技能', link: '/soft-skills/' },
+        ]
       },
       {
         text: 'GitHub',
@@ -353,6 +375,149 @@ export default defineConfig({
           text: '可观测性',
           items: [
             { text: '可观测性', link: '/architecture/10_observability/01_observability' }
+          ]
+        }
+      ],
+
+      '/cloud-native/': [
+        {
+          text: '云原生',
+          items: [
+            { text: '简介', link: '/cloud-native/' },
+            { text: '云计算基础', link: '/cloud-native/01_cloud_fundamentals' },
+            { text: 'Serverless', link: '/cloud-native/02_serverless' },
+            { text: '云原生模式', link: '/cloud-native/03_cloud_patterns' },
+            { text: '多云架构', link: '/cloud-native/04_multi_cloud' },
+            { text: '成本优化', link: '/cloud-native/05_cost_optimization' }
+          ]
+        }
+      ],
+
+      '/devops/': [
+        {
+          text: 'DevOps',
+          items: [
+            { text: '简介', link: '/devops/' },
+            { text: 'CI/CD 流水线', link: '/devops/01_cicd_pipeline' },
+            { text: 'GitOps', link: '/devops/02_gitops' },
+            { text: '基础设施即代码', link: '/devops/03_infrastructure_as_code' },
+            { text: '部署策略', link: '/devops/04_deployment_strategies' },
+            { text: '发布管理', link: '/devops/05_release_management' }
+          ]
+        }
+      ],
+
+      '/api-gateway/': [
+        {
+          text: 'API 网关',
+          items: [
+            { text: '简介', link: '/api-gateway/' },
+            { text: '网关设计', link: '/api-gateway/01_gateway_design' },
+            { text: '路由策略', link: '/api-gateway/02_routing_strategies' },
+            { text: '认证授权', link: '/api-gateway/03_authentication' },
+            { text: '网关对比', link: '/api-gateway/04_gateway_comparison' }
+          ]
+        }
+      ],
+
+      '/ddd/': [
+        {
+          text: '领域驱动设计',
+          items: [
+            { text: '简介', link: '/ddd/' },
+            { text: '战略设计', link: '/ddd/01_strategic_design' },
+            { text: '战术设计', link: '/ddd/02_tactical_design' },
+            { text: '事件风暴', link: '/ddd/03_event_storming' },
+            { text: 'DDD 实践', link: '/ddd/04_ddd_in_practice' }
+          ]
+        }
+      ],
+
+      '/performance/': [
+        {
+          text: '性能优化',
+          items: [
+            { text: '简介', link: '/performance/' },
+            { text: '压力测试', link: '/performance/01_load_testing' },
+            { text: '性能分析', link: '/performance/02_profiling' },
+            { text: '瓶颈分析', link: '/performance/03_bottleneck_analysis' },
+            { text: '优化案例', link: '/performance/04_optimization_cases' }
+          ]
+        }
+      ],
+
+      '/governance/': [
+        {
+          text: '技术治理',
+          items: [
+            { text: '简介', link: '/governance/' },
+            { text: '技术债务', link: '/governance/01_technical_debt' },
+            { text: '架构评审', link: '/governance/02_architecture_review' },
+            { text: 'ADR', link: '/governance/03_adr' },
+            { text: '技术标准', link: '/governance/04_standards' }
+          ]
+        }
+      ],
+
+      '/data-architecture/': [
+        {
+          text: '数据架构',
+          items: [
+            { text: '简介', link: '/data-architecture/' },
+            { text: '数据建模', link: '/data-architecture/01_data_modeling' },
+            { text: '数据治理', link: '/data-architecture/02_data_governance' },
+            { text: '数据管道', link: '/data-architecture/03_data_pipeline' },
+            { text: '数据湖', link: '/data-architecture/04_data_lake' }
+          ]
+        }
+      ],
+
+      '/security/': [
+        {
+          text: '安全',
+          items: [
+            { text: '简介', link: '/security/' },
+            { text: '零信任架构', link: '/security/01_zero_trust' },
+            { text: '密钥管理', link: '/security/02_secret_management' },
+            { text: '合规', link: '/security/03_compliance' },
+            { text: '安全测试', link: '/security/04_security_testing' }
+          ]
+        }
+      ],
+
+      '/bigdata/': [
+        {
+          text: '大数据',
+          items: [
+            { text: '简介', link: '/bigdata/' },
+            { text: '批处理 (Spark)', link: '/bigdata/01_batch_processing' },
+            { text: '流处理 (Flink)', link: '/bigdata/02_stream_processing' },
+            { text: '实时数仓', link: '/bigdata/03_realtime_warehouse' },
+            { text: 'OLAP', link: '/bigdata/04_olap' }
+          ]
+        }
+      ],
+
+      '/ai-architecture/': [
+        {
+          text: 'AI 架构',
+          items: [
+            { text: '简介', link: '/ai-architecture/' },
+            { text: 'ML 流水线', link: '/ai-architecture/01_ml_pipeline' },
+            { text: '模型服务', link: '/ai-architecture/02_model_serving' },
+            { text: '特征平台', link: '/ai-architecture/03_feature_store' }
+          ]
+        }
+      ],
+
+      '/soft-skills/': [
+        {
+          text: '软技能',
+          items: [
+            { text: '简介', link: '/soft-skills/' },
+            { text: '技术决策', link: '/soft-skills/01_technical_decisions' },
+            { text: '架构文档', link: '/soft-skills/02_architecture_documentation' },
+            { text: '沟通协作', link: '/soft-skills/03_communication' }
           ]
         }
       ],
