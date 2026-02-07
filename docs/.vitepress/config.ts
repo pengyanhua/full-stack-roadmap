@@ -20,6 +20,9 @@ export default defineConfig({
   // 忽略死链接（用于还未创建的页面）
   ignoreDeadLinks: true,
 
+  // 排除项目元文档
+  srcExclude: ['../.meta/**'],
+
   // 主题配置
   themeConfig: {
     // Logo
