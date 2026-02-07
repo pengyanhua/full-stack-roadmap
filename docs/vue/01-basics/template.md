@@ -6,7 +6,7 @@
 :::
 
 Script Setup 语法
-<script setup> 是 Vue 3 的语法糖：
+`<script setup>` 是 Vue 3 的语法糖：
 - 更简洁的代码
 - 更好的运行时性能
 - 更好的 IDE 类型支持
