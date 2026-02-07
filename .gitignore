@@ -60,3 +60,31 @@ Thumbs.db
 # Logs
 logs/
 *.log
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env*.local
+
+# Secrets and credentials
+secrets/
+*.secret
+*.pem
+*.key
+*.cert
+*.crt
+credentials.json
+serviceAccount.json
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.backup
+*.bak
+*~
