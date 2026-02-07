@@ -6,6 +6,17 @@ export default defineConfig({
   description: "从基础到进阶的全栈学习资源，涵盖编程语言、框架、数据库、系统架构和数据结构",
   lang: 'zh-CN',
 
+  // Head 配置
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/logo.svg' }],
+    ['meta', { name: 'theme-color', content: '#4F46E5' }],
+    ['meta', { name: 'og:type', content: 'website' }],
+    ['meta', { name: 'og:locale', content: 'zh_CN' }],
+    ['meta', { name: 'og:site_name', content: '全栈开发学习路线' }],
+    ['meta', { name: 'og:image', content: 'https://pengyanhua.github.io/full-stack-roadmap/logo.svg' }]
+  ],
+
   // 忽略死链接（用于还未创建的页面）
   ignoreDeadLinks: true,
 
