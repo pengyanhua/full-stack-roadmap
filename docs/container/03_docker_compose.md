@@ -1,0 +1,460 @@
+# 03_docker_compose
+
+```yaml
+# ============================================================
+#                Docker Compose 配置详解
+# ============================================================
+# Docker Compose 用于定义和运行多容器 Docker 应用
+# 配置文件默认名：docker-compose.yml 或 compose.yaml
+#
+# 常用命令：
+#   docker compose up -d          # 启动所有服务
+#   docker compose down           # 停止并删除容器
+#   docker compose ps             # 查看服务状态
+#   docker compose logs -f        # 查看日志
+#   docker compose exec web bash  # 进入容器
+# ============================================================
+
+# Compose 文件版本（可选，新版本不需要）
+# version: "3.8"
+
+# ============================================================
+#                    服务定义
+# ============================================================
+services:
+
+  # ----------------------------------------------------------
+  #                    Web 应用服务
+  # ----------------------------------------------------------
+  web:
+    # 镜像名称（二选一：image 或 build）
+    image: nginx:alpine
+
+    # 或者从 Dockerfile 构建
+    # build:
+    #   context: .                    # 构建上下文路径
+    #   dockerfile: Dockerfile        # Dockerfile 文件名
+    #   args:                         # 构建参数
+    #     - NODE_ENV=production
+    #   target: production            # 多阶段构建目标
+
+    # 容器名称
+    container_name: my-web
+
+    # 端口映射
+    ports:
+      - "80:80"                       # 宿主机:容器
+      - "443:443"
+      - "127.0.0.1:8080:80"          # 只绑定本地
+
+    # 数据卷挂载
+    volumes:
+      - ./nginx/html:/usr/share/nginx/html          # 绑定挂载
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro         # 只读挂载
+      - nginx_logs:/var/log/nginx                    # 命名卷
+
+    # 环境变量
+    environment:
+      - TZ=Asia/Shanghai
+      - NGINX_HOST=localhost
+
+    # 或从文件读取环境变量
+    # env_file:
+    #   - .env
+    #   - .env.local
+
+    # 网络
+    networks:
+      - frontend
+      - backend
+
+    # 依赖关系（决定启动顺序）
+    depends_on:
+      - api
+      - db
+
+    # 更严格的依赖（等待服务健康）
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
+    #   redis:
+    #     condition: service_started
+
+    # 重启策略
+    restart: unless-stopped
+    # 可选值：no, always, on-failure, unless-stopped
+
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+    # 日志配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+
+  # ----------------------------------------------------------
+  #                    API 服务
+  # ----------------------------------------------------------
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: production
+
+    container_name: my-api
+
+    ports:
+      - "3000:3000"
+
+    volumes:
+      - ./api:/app
+      - /app/node_modules              # 排除 node_modules
+
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-myapp}       # 使用环境变量，默认值 myapp
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+    env_file:
+      - .env
+
+    networks:
+      - backend
+
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+    restart: unless-stopped
+
+    # 运行命令覆盖
+    command: ["npm", "run", "start:prod"]
+
+    # 或使用 entrypoint
+    # entrypoint: ["/docker-entrypoint.sh"]
+
+    # 工作目录
+    working_dir: /app
+
+    # 用户
+    user: "node"
+
+    # 额外的 hosts 映射
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
+  # ----------------------------------------------------------
+  #                    数据库服务
+  # ----------------------------------------------------------
+  db:
+    image: postgres:15-alpine
+
+    container_name: my-db
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d    # 初始化脚本
+
+    environment:
+      POSTGRES_DB: ${DB_NAME:-myapp}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+    networks:
+      - backend
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+    # 共享内存大小（PostgreSQL 需要）
+    shm_size: 256mb
+
+
+  # ----------------------------------------------------------
+  #                    Redis 缓存服务
+  # ----------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+
+    container_name: my-redis
+
+    ports:
+      - "6379:6379"
+
+    volumes:
+      - redis_data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+
+    # 自定义启动命令
+    command: redis-server /usr/local/etc/redis/redis.conf --appendonly yes
+
+    networks:
+      - backend
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  # ----------------------------------------------------------
+  #                    MySQL 数据库
+  # ----------------------------------------------------------
+  mysql:
+    image: mysql:8.0
+
+    container_name: my-mysql
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/init:/docker-entrypoint-initdb.d
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-myapp}
+      MYSQL_USER: ${MYSQL_USER:-user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: Asia/Shanghai
+
+    networks:
+      - backend
+
+    restart: unless-stopped
+
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  # ----------------------------------------------------------
+  #                    MongoDB 数据库
+  # ----------------------------------------------------------
+  mongo:
+    image: mongo:6
+
+    container_name: my-mongo
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongo_data:/data/db
+      - ./mongo/init:/docker-entrypoint-initdb.d
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-root}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE:-myapp}
+
+    networks:
+      - backend
+
+    restart: unless-stopped
+
+
+  # ----------------------------------------------------------
+  #                    Elasticsearch
+  # ----------------------------------------------------------
+  elasticsearch:
+    image: elasticsearch:8.10.0
+
+    container_name: my-elasticsearch
+
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+
+    networks:
+      - backend
+
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+
+
+  # ----------------------------------------------------------
+  #                    RabbitMQ 消息队列
+  # ----------------------------------------------------------
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
+    container_name: my-rabbitmq
+
+    ports:
+      - "5672:5672"     # AMQP
+      - "15672:15672"   # 管理界面
+
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-admin}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+
+    networks:
+      - backend
+
+    restart: unless-stopped
+
+
+  # ----------------------------------------------------------
+  #                    MinIO 对象存储
+  # ----------------------------------------------------------
+  minio:
+    image: minio/minio:latest
+
+    container_name: my-minio
+
+    ports:
+      - "9000:9000"     # API
+      - "9001:9001"     # 控制台
+
+    volumes:
+      - minio_data:/data
+
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER:-admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+
+    command: server /data --console-address ":9001"
+
+    networks:
+      - backend
+
+    restart: unless-stopped
+
+
+# ============================================================
+#                    网络定义
+# ============================================================
+networks:
+  # 前端网络
+  frontend:
+    driver: bridge
+
+  # 后端网络
+  backend:
+    driver: bridge
+    # 自定义网络配置
+    # ipam:
+    #   config:
+    #     - subnet: 172.20.0.0/16
+
+  # 使用外部已存在的网络
+  # external_network:
+  #   external: true
+
+
+# ============================================================
+#                    数据卷定义
+# ============================================================
+volumes:
+  # 命名卷（由 Docker 管理）
+  nginx_logs:
+  postgres_data:
+  redis_data:
+  mysql_data:
+  mongo_data:
+  es_data:
+  rabbitmq_data:
+  minio_data:
+
+  # 带选项的卷
+  # custom_volume:
+  #   driver: local
+  #   driver_opts:
+  #     type: nfs
+  #     o: addr=192.168.1.100,rw
+  #     device: ":/path/to/dir"
+
+
+# ============================================================
+#                    配置定义（Configs）
+# ============================================================
+# configs:
+#   nginx_config:
+#     file: ./nginx/nginx.conf
+#
+#   # 使用配置
+#   # services:
+#   #   web:
+#   #     configs:
+#   #       - source: nginx_config
+#   #         target: /etc/nginx/nginx.conf
+
+
+# ============================================================
+#                    密钥定义（Secrets）
+# ============================================================
+# secrets:
+#   db_password:
+#     file: ./secrets/db_password.txt
+#
+#   # 使用密钥
+#   # services:
+#   #   db:
+#   #     secrets:
+#   #       - db_password
+#     # 密钥会挂载到 /run/secrets/db_password
+
+```

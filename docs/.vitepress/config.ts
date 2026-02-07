@@ -142,6 +142,134 @@ export default defineConfig({
         }
       ],
 
+      '/react/': [
+        {
+          text: 'React 学习路径',
+          items: [
+            { text: '简介', link: '/react/' },
+            { text: 'JSX 语法', link: '/react/01-basics/jsx' },
+            { text: '组件', link: '/react/01-basics/components' },
+            { text: 'useState Hook', link: '/react/02-hooks/useState' },
+            { text: 'useEffect Hook', link: '/react/02-hooks/useEffect' },
+            { text: 'Context API', link: '/react/03-advanced/context' }
+          ]
+        }
+      ],
+
+      '/vue/': [
+        {
+          text: 'Vue 学习路径',
+          items: [
+            { text: '简介', link: '/vue/' },
+            { text: '模板语法', link: '/vue/01-basics/template' },
+            { text: '组件基础', link: '/vue/01-basics/components' },
+            { text: '响应式', link: '/vue/02-composition/reactivity' },
+            { text: 'Composables', link: '/vue/02-composition/composables' },
+            { text: 'Router', link: '/vue/03-advanced/router' },
+            { text: 'Pinia', link: '/vue/03-advanced/pinia' }
+          ]
+        }
+      ],
+
+      '/mysql/': [
+        {
+          text: 'MySQL 学习路径',
+          items: [
+            { text: '简介', link: '/mysql/' },
+            { text: 'SQL 基础', link: '/mysql/01_basics' },
+            { text: '连接与子查询', link: '/mysql/02_joins_subqueries' },
+            { text: '索引优化', link: '/mysql/03_indexes_optimization' },
+            { text: '事务与约束', link: '/mysql/04_transactions_constraints' },
+            { text: '存储过程', link: '/mysql/05_procedures_functions' },
+            { text: '实战案例', link: '/mysql/06_practical_examples' }
+          ]
+        }
+      ],
+
+      '/postgresql/': [
+        {
+          text: 'PostgreSQL 学习路径',
+          items: [
+            { text: '简介', link: '/postgresql/' },
+            { text: 'SQL 基础', link: '/postgresql/01_basics' },
+            { text: '连接与子查询', link: '/postgresql/02_joins_subqueries' },
+            { text: '高级特性', link: '/postgresql/03_advanced_features' },
+            { text: '事务与索引', link: '/postgresql/04_transactions_indexes' },
+            { text: '管理运维', link: '/postgresql/05_administration' },
+            { text: '实战案例', link: '/postgresql/06_practical_examples' }
+          ]
+        }
+      ],
+
+      '/redis/': [
+        {
+          text: 'Redis 学习路径',
+          items: [
+            { text: '简介', link: '/redis/' },
+            { text: 'Redis 基础', link: '/redis/01_basics' },
+            { text: '高级特性', link: '/redis/02_advanced' },
+            { text: '持久化与集群', link: '/redis/03_persistence_cluster' }
+          ]
+        }
+      ],
+
+      '/elasticsearch/': [
+        {
+          text: 'Elasticsearch 学习路径',
+          items: [
+            { text: '简介', link: '/elasticsearch/' },
+            { text: 'ES 基础', link: '/elasticsearch/01_basics' },
+            { text: '查询 DSL', link: '/elasticsearch/02_query_dsl' },
+            { text: '聚合分析', link: '/elasticsearch/03_aggregations' }
+          ]
+        }
+      ],
+
+      '/kafka/': [
+        {
+          text: 'Kafka 学习路径',
+          items: [
+            { text: '简介', link: '/kafka/' },
+            { text: 'Kafka 基础', link: '/kafka/01_basics' },
+            { text: '常用命令', link: '/kafka/02_commands' },
+            { text: '高级特性', link: '/kafka/03_advanced' }
+          ]
+        }
+      ],
+
+      '/datastructures/': [
+        {
+          text: '数据结构学习路径',
+          items: [
+            { text: '简介', link: '/datastructures/' },
+            { text: '数组', link: '/datastructures/01_array/implementation' },
+            { text: '链表', link: '/datastructures/02_linked_list/implementation' },
+            { text: '栈和队列', link: '/datastructures/03_stack_queue/implementation' },
+            { text: '哈希表', link: '/datastructures/04_hash_table/implementation' },
+            { text: '树', link: '/datastructures/05_tree/implementation' },
+            { text: '堆', link: '/datastructures/06_heap/implementation' },
+            { text: '图', link: '/datastructures/07_graph/implementation' },
+            { text: '高级数据结构', link: '/datastructures/08_advanced/implementation' }
+          ]
+        }
+      ],
+
+      '/container/': [
+        {
+          text: '容器化学习路径',
+          items: [
+            { text: '简介', link: '/container/' },
+            { text: 'Docker 基础', link: '/container/01_docker_basics' },
+            { text: 'Dockerfile', link: '/container/02_dockerfile' },
+            { text: 'Docker Compose', link: '/container/03_docker_compose' },
+            { text: 'Kubernetes 基础', link: '/container/04_kubernetes_basics' },
+            { text: 'K8s 示例', link: '/container/05_k8s_examples' },
+            { text: '实战脚本', link: '/container/06_practical_scripts' },
+            { text: '速查表', link: '/container/07_cheatsheet' }
+          ]
+        }
+      ],
+
       '/architecture/': [
         {
           text: '系统架构',

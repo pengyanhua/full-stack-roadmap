@@ -26,11 +26,13 @@ const LANG_CONFIG = {
   '.go': { name: 'go', comment: '//' },
   '.java': { name: 'java', comment: '//' },
   '.js': { name: 'javascript', comment: '//' },
-  '.ts': { name: 'typescript', comment: '//' }
+  '.ts': { name: 'typescript', comment: '//' },
+  '.jsx': { name: 'jsx', comment: '//' },
+  '.vue': { name: 'vue', comment: '//' }
 }
 
 // 需要转换的目录
-const CONVERT_DIRS = ['Python', 'Go', 'Java', 'JavaScript']
+const CONVERT_DIRS = ['Python', 'Go', 'Java', 'JavaScript', 'React', 'Vue', 'DataStructures']
 
 /**
  * 解析代码文件，提取结构化内容
