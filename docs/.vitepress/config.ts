@@ -540,7 +540,7 @@ export default defineConfig({
     // 页脚
     footer: {
       message: '基于 MIT 许可发布',
-      copyright: 'Copyright © 2025-present'
+      copyright: 'Copyright © 2026-present'
     },
 
     // 搜索
