@@ -15,7 +15,7 @@ export default defineConfig({
     ['link', { rel: 'apple-touch-icon', href: '/logo.svg' }],
 
     // SEO Meta Tags
-    ['meta', { name: 'keywords', content: 'Python, Go, Java, JavaScript, React, Vue, 全栈开发, 全栈, 架构师, 系统架构, 微服务, 云原生, DevOps, 数据库, Redis, MySQL, Kafka, 学习路线, 编程教程, Vibe Coding, 气氛编程, AI编程, AI 辅助编程' }],
+    ['meta', { name: 'keywords', content: 'Python, Go, Java, JavaScript, React, Vue, 全栈开发, 全栈, 架构师, 系统架构, 微服务, 云原生, DevOps, 数据库, Redis, MySQL, Kafka, 学习路线, 编程教程, Vibe Coding, 气氛编程, AI编程, AI 辅助编程, Claude Code, Codex, Google Antigravity, Trae, Cursor, AI 代码助手' }],
     ['meta', { name: 'author', content: '全栈开发学习路线' }],
     ['meta', { name: 'robots', content: 'index, follow' }],
     ['meta', { name: 'googlebot', content: 'index, follow' }],
