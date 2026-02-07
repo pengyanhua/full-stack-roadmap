@@ -16,6 +16,9 @@ docs/.vitepress/cache
 # Claude
 .claude/
 
+# Project meta documents
+.meta/
+
 # Python
 __pycache__/
 *.py[cod]
