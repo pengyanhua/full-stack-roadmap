@@ -6,15 +6,13 @@
 :::
 
 Todo 命令行应用
-
 一个简单的命令行 Todo 应用，演示 Node.js 开发。
-
 用法：
-- `node 01_todo_cli.js add "任务内容"`
-- `node 01_todo_cli.js list`
-- `node 01_todo_cli.js done &lt;id&gt;`
-- `node 01_todo_cli.js remove &lt;id&gt;`
-- `node 01_todo_cli.js clear`
+  node 01_todo_cli.js add "任务内容"
+  node 01_todo_cli.js list
+  node 01_todo_cli.js done <id>
+  node 01_todo_cli.js remove <id>
+  node 01_todo_cli.js clear
 
 ## 完整代码
 

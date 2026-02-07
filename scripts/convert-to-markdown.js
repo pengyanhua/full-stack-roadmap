@@ -244,8 +244,13 @@ function generateSimpleMarkdown(content, filename, ext) {
     if (docstringMatch) {
       const docstring = docstringMatch[1].trim()
         .replace(/^\s*\*\s?/gm, '')  // 移除每行开头的 *
+        .replace(/^[=\-]{20,}\s*/gm, '')  // 移除分隔线
+        .replace(/\s*[=\-]{20,}$/gm, '')
         .trim()
-      markdown += `${docstring}\n\n`
+
+      if (docstring) {
+        markdown += `${docstring}\n\n`
+      }
     }
   }
 
