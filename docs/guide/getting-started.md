@@ -273,7 +273,7 @@ npm -v
 
 如果有问题或建议：
 
-- 📧 Email：your-email@example.com
+- 📧 Email：pyh@outlook.com
 - 💬 [GitHub Discussions](https://github.com/pengyanhua/full-stack-roadmap/discussions)
 - 🐛 [报告问题](https://github.com/pengyanhua/full-stack-roadmap/issues)
 
