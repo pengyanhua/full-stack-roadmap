@@ -9,6 +9,10 @@ export default defineConfig({
 
   // Head 配置
   head: [
+    // Google Analytics (gtag.js)
+    ['script', { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-XMVJX1SL5S' }],
+    ['script', {}, `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-XMVJX1SL5S');`],
+
     // Favicon
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/logo.svg' }],
