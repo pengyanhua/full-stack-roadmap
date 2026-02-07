@@ -14,6 +14,11 @@ const ROOT_DIR = path.resolve(__dirname, '..')
 
 // 模块映射配置
 const MODULES = {
+  'Architecture': {
+    source: 'Architecture',
+    dest: 'docs/architecture',
+    type: 'markdown'  // 系统架构文档
+  },
   'Container': {
     source: 'Container',
     dest: 'docs/container',
@@ -110,7 +115,34 @@ function processModule(moduleName, config) {
     const filePath = path.join(sourcePath, file)
     const stat = fs.statSync(filePath)
 
-    if (stat.isFile()) {
+    if (stat.isDirectory()) {
+      // 递归处理子目录
+      const subDestPath = path.join(destPath, file)
+      if (!fs.existsSync(subDestPath)) {
+        fs.mkdirSync(subDestPath, { recursive: true })
+      }
+
+      const subFiles = fs.readdirSync(filePath)
+      for (const subFile of subFiles) {
+        const subFilePath = path.join(filePath, subFile)
+        const subStat = fs.statSync(subFilePath)
+
+        if (subStat.isFile()) {
+          let destFile, content
+
+          if (config.type === 'markdown' && subFile.endsWith('.md')) {
+            destFile = path.join(subDestPath, subFile)
+            content = fs.readFileSync(subFilePath, 'utf-8')
+          }
+
+          if (destFile && content) {
+            fs.writeFileSync(destFile, content, 'utf-8')
+            console.log(`   ✓ ${file}/${subFile}`)
+            count++
+          }
+        }
+      }
+    } else if (stat.isFile()) {
       let destFile, content
 
       if (config.type === 'markdown') {

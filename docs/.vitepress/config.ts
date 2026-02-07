@@ -279,6 +279,81 @@ export default defineConfig({
           items: [
             { text: '简介', link: '/architecture/' }
           ]
+        },
+        {
+          text: '系统设计',
+          items: [
+            { text: '设计原则', link: '/architecture/01_system_design/01_design_principles' },
+            { text: '架构模式', link: '/architecture/01_system_design/02_architecture_patterns' },
+            { text: '容量规划', link: '/architecture/01_system_design/03_capacity_planning' }
+          ]
+        },
+        {
+          text: '分布式系统',
+          items: [
+            { text: 'CAP/BASE 理论', link: '/architecture/02_distributed/01_cap_base' },
+            { text: '分布式锁', link: '/architecture/02_distributed/02_distributed_lock' },
+            { text: '分布式事务', link: '/architecture/02_distributed/03_distributed_transaction' }
+          ]
+        },
+        {
+          text: '高可用',
+          items: [
+            { text: '高可用原则', link: '/architecture/03_high_availability/01_ha_principles' },
+            { text: '限流', link: '/architecture/03_high_availability/02_rate_limiting' },
+            { text: '故障转移', link: '/architecture/03_high_availability/03_failover' },
+            { text: '容灾', link: '/architecture/03_high_availability/04_disaster_recovery' }
+          ]
+        },
+        {
+          text: '高性能',
+          items: [
+            { text: '性能指标', link: '/architecture/04_high_performance/01_performance_metrics' },
+            { text: '并发', link: '/architecture/04_high_performance/02_concurrency' },
+            { text: 'I/O 优化', link: '/architecture/04_high_performance/03_io_optimization' },
+            { text: '池化模式', link: '/architecture/04_high_performance/04_pool_pattern' }
+          ]
+        },
+        {
+          text: '微服务',
+          items: [
+            { text: '服务拆分', link: '/architecture/05_microservices/01_service_splitting' },
+            { text: 'API 设计', link: '/architecture/05_microservices/02_api_design' },
+            { text: '服务治理', link: '/architecture/05_microservices/03_service_governance' },
+            { text: 'Service Mesh', link: '/architecture/05_microservices/04_service_mesh' }
+          ]
+        },
+        {
+          text: '数据库架构',
+          items: [
+            { text: 'MySQL 优化', link: '/architecture/06_database_architecture/01_mysql_optimization' },
+            { text: '分库分表', link: '/architecture/06_database_architecture/02_sharding' },
+            { text: '读写分离', link: '/architecture/06_database_architecture/03_read_write_splitting' }
+          ]
+        },
+        {
+          text: '缓存架构',
+          items: [
+            { text: '缓存模式', link: '/architecture/07_cache_architecture/01_cache_patterns' }
+          ]
+        },
+        {
+          text: '消息队列',
+          items: [
+            { text: 'MQ 模式', link: '/architecture/08_message_queue/01_mq_patterns' }
+          ]
+        },
+        {
+          text: '安全',
+          items: [
+            { text: '安全基础', link: '/architecture/09_security/01_security_fundamentals' }
+          ]
+        },
+        {
+          text: '可观测性',
+          items: [
+            { text: '可观测性', link: '/architecture/10_observability/01_observability' }
+          ]
         }
       ],
 
