@@ -14,7 +14,7 @@ export default defineConfig({
     ['meta', { name: 'og:type', content: 'website' }],
     ['meta', { name: 'og:locale', content: 'zh_CN' }],
     ['meta', { name: 'og:site_name', content: '全栈开发学习路线' }],
-    ['meta', { name: 'og:image', content: 'https://pengyanhua.github.io/full-stack-roadmap/logo.svg' }]
+    ['meta', { name: 'og:image', content: 'https://t.tecfav.com/logo.svg' }]
   ],
 
   // 忽略死链接（用于还未创建的页面）
@@ -379,6 +379,6 @@ export default defineConfig({
 
   // 站点地图
   sitemap: {
-    hostname: 'https://pengyanhua.github.io/full-stack-roadmap'
+    hostname: 'https://t.tecfav.com'
   }
 })

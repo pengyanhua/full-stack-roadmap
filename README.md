@@ -6,7 +6,7 @@ A comprehensive full-stack development learning resource covering programming la
 
 ## 📖 Online Documentation
 
-🌐 **Visit the website**: [https://pengyanhua.github.io/full-stack-roadmap](https://pengyanhua.github.io/full-stack-roadmap)
+🌐 **Visit the website**: [https://t.tecfav.com](https://t.tecfav.com)
 
 The documentation website provides:
 - 🎨 Beautiful and responsive UI
@@ -19,7 +19,7 @@ The documentation website provides:
 
 ### View Online
 
-Visit the [documentation website](https://pengyanhua.github.io/full-stack-roadmap) to browse all content with enhanced readability.
+Visit the [documentation website](https://t.tecfav.com) to browse all content with enhanced readability.
 
 ### Local Development
 
@@ -214,7 +214,7 @@ Go/
 ```
 
 **How to learn**:
-1. Visit the [documentation website](https://pengyanhua.github.io/full-stack-roadmap) for the best experience
+1. Visit the [documentation website](https://t.tecfav.com) for the best experience
 2. Or browse the code repository directly, following the numbered order
 3. Run the code examples and practice hands-on
 4. Complete the project exercises in each module
