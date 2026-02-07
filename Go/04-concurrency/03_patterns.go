@@ -56,7 +56,7 @@ func main03() {
 	merged := fanIn(c1, c2)
 
 	// 收集结果
-	for i := 0; i < 5; i++ {
+	for range 5 {
 		fmt.Println("平方结果:", <-merged)
 	}
 
@@ -166,7 +166,7 @@ func main03() {
 		fmt.Println("初始化只执行一次")
 	}
 
-	for i := 0; i < 5; i++ {
+	for i := range 5 {
 		wg2.Add(1)
 		go func(n int) {
 			defer wg2.Done()
@@ -320,7 +320,7 @@ func longRunningTask(ctx context.Context) {
 // 带重试的操作
 func doWithRetry(maxRetries int, delay time.Duration, fn func() error) (string, error) {
 	var err error
-	for i := 0; i < maxRetries; i++ {
+	for i := range maxRetries {
 		fmt.Printf("尝试 %d/%d\n", i+1, maxRetries)
 		err = fn()
 		if err == nil {

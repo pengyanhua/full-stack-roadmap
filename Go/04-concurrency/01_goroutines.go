@@ -98,19 +98,17 @@ func main() {
 	// 【错误示例】循环变量被共享
 	fmt.Println("错误方式:")
 	var wg2 sync.WaitGroup
-	for i := 0; i < 3; i++ {
-		wg2.Add(1)
-		go func() {
-			defer wg2.Done()
+	for i := range 3 {
+		wg2.Go(func() {
 			fmt.Println("  i =", i) // 可能都打印 3
-		}()
+		})
 	}
 	wg2.Wait()
 
 	// 【正确示例】通过参数传递
 	fmt.Println("正确方式:")
 	var wg3 sync.WaitGroup
-	for i := 0; i < 3; i++ {
+	for i := range 3 {
 		wg3.Add(1)
 		go func(n int) {
 			defer wg3.Done()
@@ -128,12 +126,10 @@ func main() {
 	counter := 0
 	var wg4 sync.WaitGroup
 
-	for i := 0; i < 1000; i++ {
-		wg4.Add(1)
-		go func() {
-			defer wg4.Done()
+	for range 1000 {
+		wg4.Go(func() {
 			counter++ // 数据竞争！
-		}()
+		})
 	}
 	wg4.Wait()
 	fmt.Println("不安全计数器:", counter, "(可能小于1000)")
@@ -143,14 +139,12 @@ func main() {
 	var mu sync.Mutex
 	var wg5 sync.WaitGroup
 
-	for i := 0; i < 1000; i++ {
-		wg5.Add(1)
-		go func() {
-			defer wg5.Done()
+	for range 1000 {
+		wg5.Go(func() {
 			mu.Lock()
 			counter2++
 			mu.Unlock()
-		}()
+		})
 	}
 	wg5.Wait()
 	fmt.Println("安全计数器:", counter2)

@@ -1,0 +1,30 @@
+{
+  "name": "full-stack-roadmap-docs",
+  "version": "1.0.0",
+  "description": "全栈开发学习路线 - 在线文档",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "convert": "node scripts/convert-to-markdown.js",
+    "fix": "node scripts/fix-markdown.js"
+  },
+  "keywords": [
+    "full-stack",
+    "learning",
+    "tutorial",
+    "python",
+    "go",
+    "java",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@giscus/vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0"
+  }
+}

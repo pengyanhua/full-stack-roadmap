@@ -1,0 +1,608 @@
+🚀 生成侧边栏配置...
+
+✅ 侧边栏配置：
+
+{
+  "/python/": [
+    {
+      "text": "Python 学习路径",
+      "items": [
+        {
+          "text": "简介",
+          "link": "/python/"
+        },
+        {
+          "text": "01 - 基础",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Control Flow",
+              "link": "/python/01-basics/control_flow"
+            },
+            {
+              "text": "Dicts",
+              "link": "/python/01-basics/dicts"
+            },
+            {
+              "text": "Sequences",
+              "link": "/python/01-basics/sequences"
+            },
+            {
+              "text": "Variables",
+              "link": "/python/01-basics/variables"
+            }
+          ]
+        },
+        {
+          "text": "02 - 函数",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Basics",
+              "link": "/python/02-functions/basics"
+            },
+            {
+              "text": "Closure",
+              "link": "/python/02-functions/closure"
+            },
+            {
+              "text": "Decorators",
+              "link": "/python/02-functions/decorators"
+            },
+            {
+              "text": "Generators",
+              "link": "/python/02-functions/generators"
+            }
+          ]
+        },
+        {
+          "text": "03 - 类与对象",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Class Basics",
+              "link": "/python/03-classes/class_basics"
+            },
+            {
+              "text": "Inheritance",
+              "link": "/python/03-classes/inheritance"
+            },
+            {
+              "text": "Protocols",
+              "link": "/python/03-classes/protocols"
+            }
+          ]
+        },
+        {
+          "text": "04 - 异步编程",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Asyncio",
+              "link": "/python/04-async/asyncio"
+            },
+            {
+              "text": "Multiprocessing",
+              "link": "/python/04-async/multiprocessing"
+            },
+            {
+              "text": "Threading",
+              "link": "/python/04-async/threading"
+            }
+          ]
+        },
+        {
+          "text": "05 - 模块与包",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Main",
+              "link": "/python/05-modules/main"
+            }
+          ]
+        },
+        {
+          "text": "06 - 测试",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Calculator",
+              "link": "/python/06-testing/calculator"
+            },
+            {
+              "text": "Test Calculator",
+              "link": "/python/06-testing/test_calculator"
+            }
+          ]
+        },
+        {
+          "text": "07 - 标准库",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Datetime Json",
+              "link": "/python/07-stdlib/datetime_json"
+            },
+            {
+              "text": "Os Sys",
+              "link": "/python/07-stdlib/os_sys"
+            },
+            {
+              "text": "Re Collections",
+              "link": "/python/07-stdlib/re_collections"
+            }
+          ]
+        },
+        {
+          "text": "08 - 项目实战",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Main",
+              "link": "/python/08-projects/main"
+            },
+            {
+              "text": "Simple Cache",
+              "link": "/python/08-projects/simple_cache"
+            },
+            {
+              "text": "Todo Cli",
+              "link": "/python/08-projects/todo_cli"
+            },
+            {
+              "text": "Word Counter",
+              "link": "/python/08-projects/word_counter"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "/go/": [
+    {
+      "text": "Go 学习路径",
+      "items": [
+        {
+          "text": "简介",
+          "link": "/go/"
+        },
+        {
+          "text": "01 - 基础",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Control Flow",
+              "link": "/go/01-basics/control_flow"
+            },
+            {
+              "text": "Maps",
+              "link": "/go/01-basics/maps"
+            },
+            {
+              "text": "Slices",
+              "link": "/go/01-basics/slices"
+            },
+            {
+              "text": "Variables",
+              "link": "/go/01-basics/variables"
+            }
+          ]
+        },
+        {
+          "text": "02 - 函数",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Basics",
+              "link": "/go/02-functions/basics"
+            },
+            {
+              "text": "Closure",
+              "link": "/go/02-functions/closure"
+            },
+            {
+              "text": "Methods",
+              "link": "/go/02-functions/methods"
+            },
+            {
+              "text": "Returns",
+              "link": "/go/02-functions/returns"
+            },
+            {
+              "text": "Variadic",
+              "link": "/go/02-functions/variadic"
+            }
+          ]
+        },
+        {
+          "text": "03 - 结构体",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Embedding",
+              "link": "/go/03-structs/embedding"
+            },
+            {
+              "text": "Interfaces",
+              "link": "/go/03-structs/interfaces"
+            },
+            {
+              "text": "Struct Basics",
+              "link": "/go/03-structs/struct_basics"
+            }
+          ]
+        },
+        {
+          "text": "04 - 并发编程",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Channels",
+              "link": "/go/04-concurrency/channels"
+            },
+            {
+              "text": "Goroutines",
+              "link": "/go/04-concurrency/goroutines"
+            },
+            {
+              "text": "Patterns",
+              "link": "/go/04-concurrency/patterns"
+            }
+          ]
+        },
+        {
+          "text": "05 - 包管理",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Main",
+              "link": "/go/05-packages/main"
+            }
+          ]
+        },
+        {
+          "text": "06 - 测试",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Calculator",
+              "link": "/go/06-testing/calculator"
+            },
+            {
+              "text": "Calculator Test",
+              "link": "/go/06-testing/calculator_test"
+            }
+          ]
+        },
+        {
+          "text": "07 - 标准库",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Io Os",
+              "link": "/go/07-stdlib/io_os"
+            },
+            {
+              "text": "Net Http",
+              "link": "/go/07-stdlib/net_http"
+            },
+            {
+              "text": "Strings Fmt",
+              "link": "/go/07-stdlib/strings_fmt"
+            },
+            {
+              "text": "Time Json",
+              "link": "/go/07-stdlib/time_json"
+            }
+          ]
+        },
+        {
+          "text": "08 - 项目实战",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Main",
+              "link": "/go/08-projects/main"
+            },
+            {
+              "text": "Simple Cache",
+              "link": "/go/08-projects/simple_cache"
+            },
+            {
+              "text": "Todo Cli",
+              "link": "/go/08-projects/todo_cli"
+            },
+            {
+              "text": "Word Counter",
+              "link": "/go/08-projects/word_counter"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "/java/": [
+    {
+      "text": "Java 学习路径",
+      "items": [
+        {
+          "text": "简介",
+          "link": "/java/"
+        },
+        {
+          "text": "01 - 基础",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Arrays",
+              "link": "/java/01-basics/Arrays"
+            },
+            {
+              "text": "ControlFlow",
+              "link": "/java/01-basics/ControlFlow"
+            },
+            {
+              "text": "Variables",
+              "link": "/java/01-basics/Variables"
+            }
+          ]
+        },
+        {
+          "text": "02 - 面向对象",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "ClassBasics",
+              "link": "/java/02-oop/ClassBasics"
+            },
+            {
+              "text": "Inheritance",
+              "link": "/java/02-oop/Inheritance"
+            },
+            {
+              "text": "Interfaces",
+              "link": "/java/02-oop/Interfaces"
+            }
+          ]
+        },
+        {
+          "text": "03 - 集合框架",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "ListDemo",
+              "link": "/java/03-collections/ListDemo"
+            },
+            {
+              "text": "MapDemo",
+              "link": "/java/03-collections/MapDemo"
+            },
+            {
+              "text": "SetDemo",
+              "link": "/java/03-collections/SetDemo"
+            }
+          ]
+        },
+        {
+          "text": "04 - 并发编程",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Executors",
+              "link": "/java/04-concurrency/Executors"
+            },
+            {
+              "text": "Synchronization",
+              "link": "/java/04-concurrency/Synchronization"
+            },
+            {
+              "text": "ThreadBasics",
+              "link": "/java/04-concurrency/ThreadBasics"
+            }
+          ]
+        },
+        {
+          "text": "05 - I/O 操作",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "FileIO",
+              "link": "/java/05-io/FileIO"
+            },
+            {
+              "text": "Streams",
+              "link": "/java/05-io/Streams"
+            }
+          ]
+        },
+        {
+          "text": "06 - 函数式编程",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Lambda",
+              "link": "/java/06-functional/Lambda"
+            },
+            {
+              "text": "StreamAPI",
+              "link": "/java/06-functional/StreamAPI"
+            }
+          ]
+        },
+        {
+          "text": "07 - 现代特性",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "PatternMatching",
+              "link": "/java/07-modern/PatternMatching"
+            },
+            {
+              "text": "Records",
+              "link": "/java/07-modern/Records"
+            },
+            {
+              "text": "VirtualThreads",
+              "link": "/java/07-modern/VirtualThreads"
+            }
+          ]
+        },
+        {
+          "text": "08 - 项目实战",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "HttpServer",
+              "link": "/java/08-projects/HttpServer"
+            },
+            {
+              "text": "SimpleCache",
+              "link": "/java/08-projects/SimpleCache"
+            },
+            {
+              "text": "TodoApp",
+              "link": "/java/08-projects/TodoApp"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "/javascript/": [
+    {
+      "text": "JavaScript 学习路径",
+      "items": [
+        {
+          "text": "简介",
+          "link": "/javascript/"
+        },
+        {
+          "text": "01 - 基础",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Control Flow",
+              "link": "/javascript/01-basics/control_flow"
+            },
+            {
+              "text": "Objects Arrays",
+              "link": "/javascript/01-basics/objects_arrays"
+            },
+            {
+              "text": "Variables",
+              "link": "/javascript/01-basics/variables"
+            }
+          ]
+        },
+        {
+          "text": "02 - 函数",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Basics",
+              "link": "/javascript/02-functions/basics"
+            },
+            {
+              "text": "Closures",
+              "link": "/javascript/02-functions/closures"
+            },
+            {
+              "text": "Closures This",
+              "link": "/javascript/02-functions/closures_this"
+            }
+          ]
+        },
+        {
+          "text": "03-async",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Async Await",
+              "link": "/javascript/03-async/async_await"
+            },
+            {
+              "text": "Promises",
+              "link": "/javascript/03-async/promises"
+            }
+          ]
+        },
+        {
+          "text": "04-oop",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Classes",
+              "link": "/javascript/04-oop/classes"
+            }
+          ]
+        },
+        {
+          "text": "05 - TypeScript",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Generics",
+              "link": "/javascript/05-typescript/generics"
+            },
+            {
+              "text": "Types",
+              "link": "/javascript/05-typescript/types"
+            }
+          ]
+        },
+        {
+          "text": "06 - 函数式编程",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Functional Basics",
+              "link": "/javascript/06-functional/functional_basics"
+            }
+          ]
+        },
+        {
+          "text": "07 - Node.js",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Filesystem",
+              "link": "/javascript/07-node/filesystem"
+            },
+            {
+              "text": "Http Server",
+              "link": "/javascript/07-node/http_server"
+            },
+            {
+              "text": "Modules Events",
+              "link": "/javascript/07-node/modules_events"
+            }
+          ]
+        },
+        {
+          "text": "08 - 项目实战",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Event Emitter",
+              "link": "/javascript/08-projects/event_emitter"
+            },
+            {
+              "text": "Promise Utils",
+              "link": "/javascript/08-projects/promise_utils"
+            },
+            {
+              "text": "State Manager",
+              "link": "/javascript/08-projects/state_manager"
+            },
+            {
+              "text": "Todo Cli",
+              "link": "/javascript/08-projects/todo_cli"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+📝 请将以上配置复制到 docs/.vitepress/config.ts 的 sidebar 字段中
