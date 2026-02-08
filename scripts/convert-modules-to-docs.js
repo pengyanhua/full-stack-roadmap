@@ -14,6 +14,11 @@ const ROOT_DIR = path.resolve(__dirname, '..')
 
 // 模块映射配置
 const MODULES = {
+  'AI_Programming': {
+    source: 'AI_Programming',
+    dest: 'docs/ai-programming',
+    type: 'markdown'  // AI 编程教程
+  },
   'Architecture': {
     source: 'Architecture',
     dest: 'docs/architecture',

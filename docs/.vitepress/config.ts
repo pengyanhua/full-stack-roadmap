@@ -153,9 +153,10 @@ export default defineConfig({
       {
         text: '数据&AI',
         items: [
+          { text: 'AI 编程', link: '/ai-programming/' },
+          { text: 'AI 架构', link: '/ai-architecture/' },
           { text: '数据架构', link: '/data-architecture/' },
           { text: '大数据', link: '/bigdata/' },
-          { text: 'AI 架构', link: '/ai-architecture/' },
         ]
       },
       {
@@ -569,6 +570,88 @@ export default defineConfig({
             { text: '流处理 (Flink)', link: '/bigdata/02_stream_processing' },
             { text: '实时数仓', link: '/bigdata/03_realtime_warehouse' },
             { text: 'OLAP', link: '/bigdata/04_olap' }
+          ]
+        }
+      ],
+
+      '/ai-programming/': [
+        {
+          text: 'AI 编程',
+          items: [
+            { text: '简介', link: '/ai-programming/' }
+          ]
+        },
+        {
+          text: '基础篇',
+          items: [
+            { text: 'LLM 基础', link: '/ai-programming/01_fundamentals/01_llm_basics' },
+            { text: 'Prompt 工程', link: '/ai-programming/01_fundamentals/02_prompt_engineering' },
+            { text: 'Embedding 向量', link: '/ai-programming/01_fundamentals/03_embedding_vectors' }
+          ]
+        },
+        {
+          text: '框架篇',
+          items: [
+            { text: 'LangChain', link: '/ai-programming/02_development_frameworks/01_langchain' },
+            { text: 'LlamaIndex', link: '/ai-programming/02_development_frameworks/02_llamaindex' },
+            { text: 'Semantic Kernel', link: '/ai-programming/02_development_frameworks/03_semantic_kernel' },
+            { text: 'AutoGen', link: '/ai-programming/02_development_frameworks/04_autogen' }
+          ]
+        },
+        {
+          text: 'RAG 篇',
+          items: [
+            { text: 'RAG 架构设计', link: '/ai-programming/03_rag_systems/01_rag_architecture' },
+            { text: '向量数据库', link: '/ai-programming/03_rag_systems/02_vector_databases' },
+            { text: '分块策略', link: '/ai-programming/03_rag_systems/03_chunking_strategies' },
+            { text: '检索优化', link: '/ai-programming/03_rag_systems/04_retrieval_optimization' },
+            { text: 'RAG 实战', link: '/ai-programming/03_rag_systems/05_rag_practice' }
+          ]
+        },
+        {
+          text: 'Agent 篇',
+          items: [
+            { text: 'Agent 基础', link: '/ai-programming/04_agent_systems/01_agent_basics' },
+            { text: 'ReAct 模式', link: '/ai-programming/04_agent_systems/02_react_pattern' },
+            { text: 'Tool Calling', link: '/ai-programming/04_agent_systems/03_tool_calling' },
+            { text: 'LangGraph', link: '/ai-programming/04_agent_systems/04_langgraph' },
+            { text: '多智能体', link: '/ai-programming/04_agent_systems/05_multi_agent' }
+          ]
+        },
+        {
+          text: '深度学习',
+          items: [
+            { text: 'PyTorch 基础', link: '/ai-programming/05_deep_learning/01_pytorch_basics' },
+            { text: 'Transformer', link: '/ai-programming/05_deep_learning/02_transformer' },
+            { text: 'LoRA 微调', link: '/ai-programming/05_deep_learning/03_fine_tuning' },
+            { text: '模型优化', link: '/ai-programming/05_deep_learning/04_model_optimization' }
+          ]
+        },
+        {
+          text: 'AI 工程',
+          items: [
+            { text: 'MLOps 实践', link: '/ai-programming/06_ai_engineering/01_mlops_practice' },
+            { text: 'vLLM 模型服务', link: '/ai-programming/06_ai_engineering/02_model_serving' },
+            { text: '监控告警', link: '/ai-programming/06_ai_engineering/03_monitoring' },
+            { text: '成本优化', link: '/ai-programming/06_ai_engineering/04_cost_optimization' }
+          ]
+        },
+        {
+          text: 'AI 辅助编程',
+          items: [
+            { text: 'GitHub Copilot', link: '/ai-programming/07_ai_assisted_coding/01_github_copilot' },
+            { text: 'Cursor 编辑器', link: '/ai-programming/07_ai_assisted_coding/02_cursor_editor' },
+            { text: 'AI 代码审查', link: '/ai-programming/07_ai_assisted_coding/03_ai_code_review' },
+            { text: '效率提升', link: '/ai-programming/07_ai_assisted_coding/04_productivity_boost' }
+          ]
+        },
+        {
+          text: '实战项目',
+          items: [
+            { text: '客服机器人', link: '/ai-programming/08_practical_projects/01_chatbot' },
+            { text: '文档问答', link: '/ai-programming/08_practical_projects/02_document_qa' },
+            { text: '代码助手', link: '/ai-programming/08_practical_projects/03_code_assistant' },
+            { text: '数据分析', link: '/ai-programming/08_practical_projects/04_data_analysis' }
           ]
         }
       ],
