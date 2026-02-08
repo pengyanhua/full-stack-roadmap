@@ -24,6 +24,16 @@ const MODULES = {
     dest: 'docs/architecture',
     type: 'markdown'  // 系统架构文档
   },
+  'Computer_Hardware': {
+    source: 'Computer_Hardware',
+    dest: 'docs/computer-hardware',
+    type: 'markdown'
+  },
+  'Operating_Systems': {
+    source: 'Operating_Systems',
+    dest: 'docs/operating-systems',
+    type: 'markdown'
+  },
   'Cloud_Native': {
     source: 'Cloud_Native',
     dest: 'docs/cloud-native',

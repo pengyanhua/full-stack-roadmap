@@ -26,3 +26,5 @@ https://t.tecfav.com/elasticsearch/
 https://t.tecfav.com/kafka/
 https://t.tecfav.com/datastructures/
 https://t.tecfav.com/container/
+https://t.tecfav.com/computer-hardware/
+https://t.tecfav.com/operating-systems/

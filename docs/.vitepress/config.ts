@@ -163,9 +163,16 @@ export default defineConfig({
         ]
       },
       {
+        text: '系统基础',
+        items: [
+          { text: '计算机硬件', link: '/computer-hardware/' },
+          { text: '操作系统', link: '/operating-systems/' },
+          { text: '数据结构', link: '/datastructures/' },
+        ]
+      },
+      {
         text: '其他',
         items: [
-          { text: '数据结构', link: '/datastructures/' },
           { text: '安全', link: '/security/' },
           { text: '软技能', link: '/soft-skills/' },
         ]
@@ -679,6 +686,42 @@ export default defineConfig({
             { text: '技术决策', link: '/soft-skills/01_technical_decisions' },
             { text: '架构文档', link: '/soft-skills/02_architecture_documentation' },
             { text: '沟通协作', link: '/soft-skills/03_communication' }
+          ]
+        }
+      ],
+
+      '/computer-hardware/': [
+        {
+          text: '计算机硬件',
+          items: [
+            { text: '简介', link: '/computer-hardware/' },
+            { text: 'CPU 架构', link: '/computer-hardware/01_cpu_architecture' },
+            { text: '内存系统', link: '/computer-hardware/02_memory_systems' },
+            { text: '存储设备', link: '/computer-hardware/03_storage_devices' },
+            { text: 'I/O 系统', link: '/computer-hardware/04_io_systems' },
+            { text: 'GPU 计算', link: '/computer-hardware/05_gpu_computing' },
+            { text: '网络硬件', link: '/computer-hardware/06_network_hardware' },
+            { text: '电源散热', link: '/computer-hardware/07_power_cooling' },
+            { text: '硬件选型', link: '/computer-hardware/08_hardware_selection' }
+          ]
+        }
+      ],
+
+      '/operating-systems/': [
+        {
+          text: '操作系统',
+          items: [
+            { text: '简介', link: '/operating-systems/' },
+            { text: 'OS 概述', link: '/operating-systems/01_os_overview' },
+            { text: '进程管理', link: '/operating-systems/02_process_management' },
+            { text: '内存管理', link: '/operating-systems/03_memory_management' },
+            { text: '文件系统', link: '/operating-systems/04_file_systems' },
+            { text: 'I/O 管理', link: '/operating-systems/05_io_management' },
+            { text: '并发控制', link: '/operating-systems/06_concurrency' },
+            { text: '虚拟化', link: '/operating-systems/07_virtualization' },
+            { text: '安全机制', link: '/operating-systems/08_security' },
+            { text: '性能调优', link: '/operating-systems/09_performance_tuning' },
+            { text: '现代 OS', link: '/operating-systems/10_modern_os' }
           ]
         }
       ],
