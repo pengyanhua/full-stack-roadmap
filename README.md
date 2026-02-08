@@ -141,25 +141,75 @@ node JavaScript/01-basics/01_variables.js
 | **Kubernetes** | Basics, Deployments, Services, Practical Examples |
 | **Linux** | Basics, File System, Commands, Shell Scripting, Process Management, Networking, Security |
 
+### System Fundamentals
+
+| Topic | Contents |
+|-------|----------|
+| **Computer Hardware** | CPU Architecture, Memory Systems, Storage Devices, I/O Systems, GPU Computing, Network Hardware, Power & Cooling, Hardware Selection |
+| **Operating Systems** | OS Overview, Process Management, Memory Management, File Systems, I/O Management, Concurrency Control, Virtualization, Security, Performance Tuning, Modern OS |
+
+### Software Architecture (for Architects)
+
+| Category | Topics |
+|----------|--------|
+| **Cloud Native** | Cloud Computing, Serverless, Multi-cloud, Cost Optimization |
+| **DevOps** | CI/CD, GitOps, Infrastructure as Code, Deployment Strategies |
+| **API Gateway** | Gateway Design, Routing, Authentication, Performance |
+| **DDD** | Strategic Design, Tactical Design, Event Storming |
+| **Performance** | Load Testing, Profiling, Bottleneck Analysis, Optimization |
+| **Governance** | Technical Debt, Architecture Review, ADR, Standards |
+| **Data Architecture** | Data Modeling, Data Governance, Data Pipeline, Data Lake |
+| **Security** | Zero Trust, Key Management, Compliance, Security Testing |
+| **Big Data** | Batch Processing, Stream Processing, Real-time Data Warehouse, OLAP |
+| **AI Architecture** | ML Pipeline, Model Serving, Feature Platform |
+| **Soft Skills** | Technical Decision-making, Architecture Documentation, Communication |
+
+### AI Programming
+
+| Topic | Contents |
+|-------|----------|
+| **Fundamentals** | LLM Basics, Prompt Engineering, Embeddings |
+| **Development Frameworks** | LangChain, LlamaIndex, Semantic Kernel, AutoGen |
+| **RAG Systems** | RAG Architecture, Vector Databases, Chunking Strategies, Retrieval Optimization |
+| **Agent Systems** | Agent Basics, ReAct Pattern, Tool Calling, LangGraph, Multi-Agent Collaboration |
+| **Deep Learning** | PyTorch, Transformer, Model Fine-tuning, Model Optimization |
+| **AI Engineering** | MLOps, Model Serving, Monitoring, Cost Optimization |
+| **AI-Assisted Coding** | GitHub Copilot, Cursor, Code Review, Efficiency Boost |
+| **Practical Projects** | Intelligent Customer Service, Document Q&A, Code Assistant, Data Analysis |
+
 ## Project Structure
 
 ```
 .
+├── AI_Architecture/       # ML systems & model serving
+├── AI_Programming/        # AI-assisted coding, RAG, Agents, Deep Learning
+├── API_Gateway/           # API Gateway design & implementation
 ├── Architecture/          # System design & architecture patterns
+├── BigData/               # Big data processing & analytics
+├── Cloud_Native/          # Cloud computing & serverless
+├── Computer_Hardware/     # Hardware fundamentals & performance
 ├── Container/             # Docker & Kubernetes
+├── Data_Architecture/     # Data modeling & governance
 ├── DataStructures/        # Data structures with implementations
+├── DDD/                   # Domain-Driven Design
+├── DevOps/                # CI/CD, GitOps, IaC
 ├── Elasticsearch/         # Elasticsearch tutorials
 ├── Go/                    # Go language learning path
+├── Governance/            # Technical governance & standards
 ├── Java/                  # Java language learning path
 ├── JavaScript/            # JavaScript learning path
 ├── Kafka/                 # Apache Kafka tutorials
 ├── Linux/                 # Linux basics & operations
 ├── MySQL/                 # MySQL database tutorials
 ├── Networking/            # Computer networking protocols
+├── Operating_Systems/     # OS principles & mechanisms
+├── Performance/           # Performance testing & optimization
 ├── PostgreSQL/            # PostgreSQL tutorials
 ├── Python/                # Python language learning path
 ├── React/                 # React framework tutorials
 ├── Redis/                 # Redis tutorials
+├── Security_Advanced/     # Advanced security practices
+├── Soft_Skills/           # Technical leadership & communication
 ├── VectorDB/              # Vector database tutorials
 └── Vue/                   # Vue framework tutorials
 ```

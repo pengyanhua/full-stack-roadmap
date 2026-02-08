@@ -51,4 +51,27 @@ DevOps/
 | 监控 | Prometheus, Grafana, ELK |
 | 安全扫描 | SonarQube, Snyk, Trivy |
 
+## 相关模块
+
+DevOps实践需要扎实的系统基础:
+
+```
+┌─────────────────────────────────────────────────┐
+│          DevOps 相关知识                         │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│  [Operating_Systems](../Operating_Systems/)    │
+│  └─▶ 进程管理、文件系统、虚拟化、容器原理       │
+│      理解容器和虚拟化的底层机制                 │
+│                                                 │
+│  DevOps (本模块)                                │
+│  └─▶ CI/CD、GitOps、IaC、部署策略               │
+│      自动化运维实践                             │
+└─────────────────────────────────────────────────┘
+```
+
+**推荐学习路径**:
+1. [Operating_Systems/07_virtualization.md](../Operating_Systems/07_virtualization.md) - 了解容器原理
+2. **DevOps (本模块)** - 学习自动化运维实践
+
 开始学习 → [01_cicd_pipeline.md](01_cicd_pipeline.md)

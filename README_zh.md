@@ -141,25 +141,75 @@ node JavaScript/01-basics/01_variables.js
 | **Kubernetes** | 基础、Deployments、Services、实战示例 |
 | **Linux** | 基础、文件系统、命令、Shell 脚本、进程管理、网络、安全 |
 
+### 系统基础
+
+| 主题 | 内容 |
+|------|------|
+| **计算机硬件** | CPU架构、内存系统、存储设备、I/O系统、GPU计算、网络硬件、电源散热、硬件选型 |
+| **操作系统** | OS概述、进程管理、内存管理、文件系统、I/O管理、并发控制、虚拟化、安全、性能调优、现代OS |
+
+### 软件架构（架构师必备）
+
+| 分类 | 主题 |
+|------|------|
+| **云原生** | 云计算、Serverless、多云架构、成本优化 |
+| **DevOps** | CI/CD、GitOps、基础设施即代码、部署策略 |
+| **API网关** | 网关设计、路由策略、认证授权、性能优化 |
+| **领域驱动设计** | 战略设计、战术设计、事件风暴 |
+| **性能调优** | 负载测试、性能分析、瓶颈定位、优化实践 |
+| **技术治理** | 技术债务、架构评审、ADR、技术标准 |
+| **数据架构** | 数据建模、数据治理、数据管道、数据湖 |
+| **安全进阶** | 零信任、密钥管理、合规性、安全测试 |
+| **大数据** | 批处理、流处理、实时数仓、OLAP |
+| **AI架构** | ML流水线、模型服务、特征平台 |
+| **软技能** | 技术决策、架构文档、技术沟通 |
+
+### AI编程
+
+| 主题 | 内容 |
+|------|------|
+| **基础知识** | LLM基础、Prompt工程、Embedding向量 |
+| **开发框架** | LangChain、LlamaIndex、Semantic Kernel、AutoGen |
+| **RAG系统** | RAG架构、向量数据库、分块策略、检索优化 |
+| **Agent系统** | Agent基础、ReAct模式、Tool Calling、LangGraph、多Agent协作 |
+| **深度学习** | PyTorch、Transformer、模型微调、模型优化 |
+| **AI工程** | MLOps、模型服务、监控、成本优化 |
+| **AI辅助编程** | GitHub Copilot、Cursor、代码审查、效率提升 |
+| **实战项目** | 智能客服、文档问答、代码助手、数据分析 |
+
 ## 项目结构
 
 ```
 .
+├── AI_Architecture/       # AI系统架构与模型服务
+├── AI_Programming/        # AI辅助编程、RAG、Agent、深度学习
+├── API_Gateway/           # API网关设计与实现
 ├── Architecture/          # 系统设计与架构模式
+├── BigData/               # 大数据处理与分析
+├── Cloud_Native/          # 云计算与Serverless
+├── Computer_Hardware/     # 计算机硬件基础与性能
 ├── Container/             # Docker 与 Kubernetes
+├── Data_Architecture/     # 数据建模与治理
 ├── DataStructures/        # 数据结构与实现
+├── DDD/                   # 领域驱动设计
+├── DevOps/                # CI/CD、GitOps、IaC
 ├── Elasticsearch/         # Elasticsearch 教程
 ├── Go/                    # Go 语言学习路径
+├── Governance/            # 技术治理与标准
 ├── Java/                  # Java 语言学习路径
 ├── JavaScript/            # JavaScript 学习路径
 ├── Kafka/                 # Apache Kafka 教程
 ├── Linux/                 # Linux 基础与运维
 ├── MySQL/                 # MySQL 数据库教程
 ├── Networking/            # 计算机网络协议
+├── Operating_Systems/     # 操作系统原理与机制
+├── Performance/           # 性能测试与调优
 ├── PostgreSQL/            # PostgreSQL 教程
 ├── Python/                # Python 语言学习路径
 ├── React/                 # React 框架教程
 ├── Redis/                 # Redis 教程
+├── Security_Advanced/     # 高级安全实践
+├── Soft_Skills/           # 技术领导力与沟通
 ├── VectorDB/              # 向量数据库教程
 └── Vue/                   # Vue 框架教程
 ```
