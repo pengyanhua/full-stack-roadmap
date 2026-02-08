@@ -1,4 +1,3 @@
-# 主要页面列表 - 用于手动提交
 https://t.tecfav.com/
 https://t.tecfav.com/guide/getting-started
 https://t.tecfav.com/python/
@@ -11,6 +10,19 @@ https://t.tecfav.com/architecture/
 https://t.tecfav.com/ai-programming/
 https://t.tecfav.com/cloud-native/
 https://t.tecfav.com/devops/
+https://t.tecfav.com/api-gateway/
+https://t.tecfav.com/ddd/
+https://t.tecfav.com/performance/
+https://t.tecfav.com/governance/
+https://t.tecfav.com/data-architecture/
+https://t.tecfav.com/security/
+https://t.tecfav.com/bigdata/
+https://t.tecfav.com/ai-architecture/
+https://t.tecfav.com/soft-skills/
 https://t.tecfav.com/mysql/
+https://t.tecfav.com/postgresql/
 https://t.tecfav.com/redis/
+https://t.tecfav.com/elasticsearch/
+https://t.tecfav.com/kafka/
 https://t.tecfav.com/datastructures/
+https://t.tecfav.com/container/
