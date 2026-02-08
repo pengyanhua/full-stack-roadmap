@@ -1,0 +1,16 @@
+# 主要页面列表 - 用于手动提交
+https://t.tecfav.com/
+https://t.tecfav.com/guide/getting-started
+https://t.tecfav.com/python/
+https://t.tecfav.com/go/
+https://t.tecfav.com/java/
+https://t.tecfav.com/javascript/
+https://t.tecfav.com/react/
+https://t.tecfav.com/vue/
+https://t.tecfav.com/architecture/
+https://t.tecfav.com/ai-programming/
+https://t.tecfav.com/cloud-native/
+https://t.tecfav.com/devops/
+https://t.tecfav.com/mysql/
+https://t.tecfav.com/redis/
+https://t.tecfav.com/datastructures/
