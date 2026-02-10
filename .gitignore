@@ -19,6 +19,9 @@ docs/.vitepress/cache
 # Project meta documents
 .meta/
 
+# AI generation scaffold (temp scripts & progress docs)
+.scaffold/
+
 # Python
 __pycache__/
 *.py[cod]
