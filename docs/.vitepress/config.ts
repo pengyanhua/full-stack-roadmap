@@ -114,6 +114,7 @@ export default defineConfig({
         items: [
           { text: 'Python', link: '/python/' },
           { text: 'Go', link: '/go/' },
+          { text: 'Rust', link: '/rust/' },
           { text: 'Java', link: '/java/' },
           { text: 'JavaScript', link: '/javascript/' },
         ]
@@ -215,6 +216,23 @@ export default defineConfig({
             { text: '06 - 测试', link: '/go/06-testing/calculator' },
             { text: '07 - 标准库', link: '/go/07-stdlib/strings_fmt' },
             { text: '08 - 项目实战', link: '/go/08-projects/todo_cli' }
+          ]
+        }
+      ],
+
+      '/rust/': [
+        {
+          text: 'Rust 学习路径',
+          items: [
+            { text: '简介', link: '/rust/' },
+            { text: '01 - 基础', link: '/rust/01-basics/variables' },
+            { text: '02 - 函数', link: '/rust/02-functions/basics' },
+            { text: '03 - 所有权', link: '/rust/03-ownership/ownership' },
+            { text: '04 - 类型系统', link: '/rust/04-structs/struct_basics' },
+            { text: '05 - 并发编程', link: '/rust/05-concurrency/threads' },
+            { text: '06 - 错误处理', link: '/rust/06-error-handling/result_option' },
+            { text: '07 - 集合', link: '/rust/07-collections/vec_hashmap' },
+            { text: '08 - 项目实战', link: '/rust/08-projects/todo_cli' }
           ]
         }
       ],
