@@ -29,11 +29,14 @@ const LANG_CONFIG = {
   '.ts': { name: 'typescript', comment: '//' },
   '.jsx': { name: 'jsx', comment: '//' },
   '.vue': { name: 'vue', comment: '//' },
-  '.rs': { name: 'rust', comment: '//' }
+  '.rs': { name: 'rust', comment: '//' },
+  '.cs': { name: 'csharp', comment: '//' },
+  '.c': { name: 'c', comment: '//' },
+  '.cpp': { name: 'cpp', comment: '//' }
 }
 
 // 需要转换的目录
-const CONVERT_DIRS = ['Python', 'Go', 'Rust', 'Java', 'JavaScript', 'React', 'Vue', 'DataStructures']
+const CONVERT_DIRS = ['Python', 'Go', 'Rust', 'Java', 'JavaScript', 'React', 'Vue', 'DataStructures', 'CSharp', 'C', 'Cpp']
 
 /**
  * 解析代码文件，提取结构化内容

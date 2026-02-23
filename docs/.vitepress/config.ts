@@ -117,6 +117,9 @@ export default defineConfig({
           { text: 'Rust', link: '/rust/' },
           { text: 'Java', link: '/java/' },
           { text: 'JavaScript', link: '/javascript/' },
+          { text: 'C#', link: '/csharp/' },
+          { text: 'C', link: '/c/' },
+          { text: 'C++', link: '/cpp/' },
         ]
       },
       {
@@ -267,6 +270,57 @@ export default defineConfig({
             { text: '06 - 函数式编程', link: '/javascript/06-functional/functional_basics' },
             { text: '07 - Node.js', link: '/javascript/07-node/filesystem' },
             { text: '08 - 项目实战', link: '/javascript/08-projects/todo_cli' }
+          ]
+        }
+      ],
+
+      '/csharp/': [
+        {
+          text: 'C# 学习路径',
+          items: [
+            { text: '简介', link: '/csharp/' },
+            { text: '01 - 基础', link: '/csharp/01-basics/variables' },
+            { text: '02 - 函数', link: '/csharp/02-functions/basics' },
+            { text: '03 - 类与接口', link: '/csharp/03-classes/class_basics' },
+            { text: '04 - 并发编程', link: '/csharp/04-concurrency/async_await' },
+            { text: '05 - 包管理', link: '/csharp/05-packages/namespaces_nuget' },
+            { text: '06 - 测试', link: '/csharp/06-testing/unit_testing' },
+            { text: '07 - 标准库', link: '/csharp/07-stdlib/collections_linq' },
+            { text: '08 - 项目实战', link: '/csharp/08-projects/todo_cli' }
+          ]
+        }
+      ],
+
+      '/c/': [
+        {
+          text: 'C 学习路径',
+          items: [
+            { text: '简介', link: '/c/' },
+            { text: '01 - 基础', link: '/c/01-basics/variables' },
+            { text: '02 - 函数', link: '/c/02-functions/functions' },
+            { text: '03 - 指针', link: '/c/03-pointers/pointers' },
+            { text: '04 - 结构体', link: '/c/04-structs/struct_basics' },
+            { text: '05 - 文件 I/O', link: '/c/05-fileio/file_io' },
+            { text: '06 - 内存管理', link: '/c/06-memory/dynamic_memory' },
+            { text: '07 - 标准库', link: '/c/07-stdlib/stdlib_overview' },
+            { text: '08 - 项目实战', link: '/c/08-projects/student_manager' }
+          ]
+        }
+      ],
+
+      '/cpp/': [
+        {
+          text: 'C++ 学习路径',
+          items: [
+            { text: '简介', link: '/cpp/' },
+            { text: '01 - 基础', link: '/cpp/01-basics/references_namespaces' },
+            { text: '02 - 面向对象', link: '/cpp/02-oop/classes' },
+            { text: '03 - 模板', link: '/cpp/03-templates/templates' },
+            { text: '04 - STL', link: '/cpp/04-stl/containers' },
+            { text: '05 - 内存管理', link: '/cpp/05-memory/smart_pointers' },
+            { text: '06 - 现代特性', link: '/cpp/06-modern/modern_features' },
+            { text: '07 - 并发编程', link: '/cpp/07-concurrency/threads_mutex' },
+            { text: '08 - 项目实战', link: '/cpp/08-projects/todo_cli' }
           ]
         }
       ],

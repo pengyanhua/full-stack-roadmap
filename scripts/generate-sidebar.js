@@ -18,7 +18,10 @@ const MODULE_NAMES = {
   'python': 'Python',
   'go': 'Go',
   'java': 'Java',
-  'javascript': 'JavaScript'
+  'javascript': 'JavaScript',
+  'csharp': 'C#',
+  'c': 'C',
+  'cpp': 'C++'
 }
 
 // 章节名称映射
@@ -40,7 +43,17 @@ const SECTION_NAMES = {
   '07-modern': '07 - 现代特性',
   '07-stdlib': '07 - 标准库',
   '07-node': '07 - Node.js',
-  '08-projects': '08 - 项目实战'
+  '08-projects': '08 - 项目实战',
+  '03-classes': '03 - 类与接口',
+  '03-pointers': '03 - 指针与数组',
+  '04-structs': '04 - 结构体',
+  '05-fileio': '05 - 文件 I/O',
+  '06-memory': '06 - 内存管理',
+  '03-templates': '03 - 模板编程',
+  '04-stl': '04 - STL 标准库',
+  '05-memory': '05 - 智能指针',
+  '06-modern': '06 - 现代 C++',
+  '07-concurrency': '07 - 并发编程'
 }
 
 /**
