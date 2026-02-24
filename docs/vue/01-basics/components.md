@@ -8,9 +8,9 @@
 组件基础知识
 【单文件组件 (SFC)】
 .vue 文件包含三个部分：
-- `<template>`: HTML 模板
-- `<script>`: JavaScript 逻辑
-- `<style>`: CSS 样式
+- `&lt;template&gt;`: HTML 模板
+- `&lt;script&gt;`: JavaScript 逻辑
+- `&lt;style&gt;`: CSS 样式
 【script setup】
 Vue 3.2+ 推荐的语法：
 - 顶层绑定自动暴露给模板

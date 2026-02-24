@@ -10,8 +10,8 @@ Todo 命令行应用
 用法：
   node 01_todo_cli.js add "任务内容"
   node 01_todo_cli.js list
-  node 01_todo_cli.js done `<id>`
-  node 01_todo_cli.js remove `<id>`
+  node 01_todo_cli.js done `&lt;id&gt;`
+  node 01_todo_cli.js remove `&lt;id&gt;`
   node 01_todo_cli.js clear
 
 ## 完整代码

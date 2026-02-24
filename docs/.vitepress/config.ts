@@ -651,7 +651,14 @@ export default defineConfig({
             { text: '批处理 (Spark)', link: '/bigdata/01_batch_processing' },
             { text: '流处理 (Flink)', link: '/bigdata/02_stream_processing' },
             { text: '实时数仓', link: '/bigdata/03_realtime_warehouse' },
-            { text: 'OLAP', link: '/bigdata/04_olap' }
+            { text: 'OLAP', link: '/bigdata/04_olap' },
+            { text: 'Hadoop与HDFS', link: '/bigdata/05_hadoop_hdfs' },
+            { text: 'Hive数据仓库', link: '/bigdata/06_hive' },
+            { text: 'HBase', link: '/bigdata/07_hbase' },
+            { text: '数据采集', link: '/bigdata/08_data_collection' },
+            { text: 'Presto/Trino', link: '/bigdata/09_presto_trino' },
+            { text: '数据湖', link: '/bigdata/10_data_lake' },
+            { text: 'Airflow', link: '/bigdata/11_airflow' }
           ]
         }
       ],

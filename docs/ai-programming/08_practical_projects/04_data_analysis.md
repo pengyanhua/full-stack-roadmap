@@ -1390,10 +1390,10 @@ class ReportGenerator:
 
     HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="zh-CN">
-<head>
+&lt;head&gt;
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <style>
+    &lt;title&gt;{{ title }}</title>
+    &lt;style&gt;
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Microsoft YaHei', sans-serif;
                background: #f5f7fa; color: #333; padding: 40px; }
@@ -1430,7 +1430,7 @@ class ReportGenerator:
                   border-top: 1px solid #eee; }
     </style>
 </head>
-<body>
+&lt;body&gt;
 <div class="container">
     <h1>{{ title }}</h1>
     <div class="meta">生成时间: {{ generated_at }} | 数据文件: {{ filename }}</div>
@@ -1456,19 +1456,19 @@ class ReportGenerator:
     </div>
 
     <h2>列信息统计</h2>
-    <table>
-        <thead><tr>
-            <th>列名</th><th>类型</th><th>非空数</th>
-            <th>唯一值</th><th>统计摘要</th>
+    &lt;table&gt;
+        &lt;thead&gt;&lt;tr&gt;
+            &lt;th&gt;列名</th>&lt;th&gt;类型</th>&lt;th&gt;非空数</th>
+            &lt;th&gt;唯一值</th>&lt;th&gt;统计摘要</th>
         </tr></thead>
-        <tbody>
+        &lt;tbody&gt;
         {% for col in columns %}
-        <tr>
-            <td><strong>{{ col.name }}</strong></td>
-            <td>{{ col.col_type }}</td>
-            <td>{{ col.non_null }}</td>
-            <td>{{ col.unique }}</td>
-            <td>{{ col.summary }}</td>
+        &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;{{ col.name }}</strong></td>
+            &lt;td&gt;{{ col.col_type }}</td>
+            &lt;td&gt;{{ col.non_null }}</td>
+            &lt;td&gt;{{ col.unique }}</td>
+            &lt;td&gt;{{ col.summary }}</td>
         </tr>
         {% endfor %}
         </tbody>
@@ -1558,15 +1558,15 @@ class ReportGenerator:
                                chart_paths, title):
         """无Jinja2时的简单HTML生成"""
         html = f"""<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>{title}</title>
-<style>body{{font-family:sans-serif;padding:40px;}}
+&lt;html&gt;&lt;head&gt;<meta charset="UTF-8">&lt;title&gt;{title}</title>
+&lt;style&gt;body{{font-family:sans-serif;padding:40px;}}
 table{{border-collapse:collapse;width:100%;}}
 th,td{{border:1px solid #ddd;padding:8px;text-align:left;}}
 th{{background:#f5f5f5;}}
 .insight{{padding:10px;margin:8px 0;background:#e8f4fd;border-radius:4px;}}
-</style></head><body>
+</style></head>&lt;body&gt;
 <h1>{title}</h1>
-<p>数据: {profile.filename} | 行数: {profile.row_count} | 列数: {profile.col_count}</p>
+&lt;p&gt;数据: {profile.filename} | 行数: {profile.row_count} | 列数: {profile.col_count}</p>
 <h2>描述统计</h2>
 {df.describe().to_html()}
 <h2>洞察</h2>"""
@@ -1779,7 +1779,7 @@ if HAS_IPYTHON:
             """列出当前可用的DataFrame: %ai_datasets"""
             dfs = self.context.find_dataframes(self.shell.user_ns)
             if not dfs:
-                display(HTML("<p>未发现DataFrame变量</p>"))
+                display(HTML("&lt;p&gt;未发现DataFrame变量</p>"))
                 return
 
             rows = ""
@@ -1787,11 +1787,11 @@ if HAS_IPYTHON:
                 cols = ", ".join(info["columns"][:8])
                 if len(info["columns"]) > 8:
                     cols += f" ... (+{len(info['columns'])-8})"
-                rows += f"""<tr>
-                    <td><b>{name}</b></td>
-                    <td>{info['shape'][0]:,} x {info['shape'][1]}</td>
-                    <td>{info['memory_mb']:.2f} MB</td>
-                    <td>{cols}</td>
+                rows += f"""&lt;tr&gt;
+                    &lt;td&gt;&lt;b&gt;{name}</b></td>
+                    &lt;td&gt;{info['shape'][0]:,} x {info['shape'][1]}</td>
+                    &lt;td&gt;{info['memory_mb']:.2f} MB</td>
+                    &lt;td&gt;{cols}</td>
                 </tr>"""
 
             html = f"""<table style="border-collapse:collapse;width:100%">
@@ -1823,7 +1823,7 @@ if HAS_IPYTHON:
                 return
 
             display(HTML(
-                f"<p>使用数据: <b>{df_name}</b> "
+                f"&lt;p&gt;使用数据: &lt;b&gt;{df_name}</b> "
                 f"({df.shape[0]:,} 行 x {df.shape[1]} 列)</p>"
             ))
 
@@ -1832,15 +1832,15 @@ if HAS_IPYTHON:
 
             # 显示生成的代码
             display(HTML(
-                f"<details><summary>生成的代码</summary>"
-                f"<pre>{result.generated_code}</pre></details>"
+                f"&lt;details&gt;&lt;summary&gt;生成的代码</summary>"
+                f"&lt;pre&gt;{result.generated_code}</pre></details>"
             ))
 
             if result.success:
                 if isinstance(result.execution_output, pd.DataFrame):
                     display(result.execution_output)
                 elif result.execution_output:
-                    display(HTML(f"<pre>{result.execution_output}</pre>"))
+                    display(HTML(f"&lt;pre&gt;{result.execution_output}</pre>"))
                 display(HTML(
                     f"<p style='color:green'>执行成功 "
                     f"({result.execution_time:.2f}s)</p>"
@@ -1878,7 +1878,7 @@ if HAS_IPYTHON:
             html = generator.generate(df, profile, insights,
                                       title=f"{df_name} 分析报告")
             generator.save_report(html, output)
-            display(HTML(f"<p>报告已保存: <a href='{output}'>{output}</a></p>"))
+            display(HTML(f"&lt;p&gt;报告已保存: <a href='{output}'>{output}</a></p>"))
 
         @line_magic
         def ai_viz(self, line):
@@ -2292,11 +2292,11 @@ if HAS_FASTAPI:
 
 FRONTEND_HTML = """<!DOCTYPE html>
 <html lang="zh-CN">
-<head>
+&lt;head&gt;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI数据分析助手</title>
-<style>
+&lt;title&gt;AI数据分析助手</title>
+&lt;style&gt;
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
        background: #f0f2f5; }
@@ -2356,7 +2356,7 @@ body { font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
 .quick-btn:hover { background: #667eea; color: white; }
 </style>
 </head>
-<body>
+&lt;body&gt;
 
 <div class="header">
     <h1>AI 数据分析助手</h1>
@@ -2368,7 +2368,7 @@ body { font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
     <div class="sidebar">
         <div class="upload-zone" id="uploadZone" onclick="fileInput.click()">
             <div style="font-size:36px; margin-bottom:8px">📊</div>
-            <p>点击或拖拽上传数据文件</p>
+            &lt;p&gt;点击或拖拽上传数据文件</p>
             <p style="color:#999; font-size:12px; margin-top:4px">
                 支持 CSV, Excel, JSON, Parquet</p>
             <input type="file" id="fileInput"
@@ -2378,9 +2378,9 @@ body { font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
         <div class="data-info" id="dataInfo" style="display:none">
             <h3 id="fileName"></h3>
             <p id="dataShape"></p>
-            <table id="colTable"><thead><tr>
-                <th>列名</th><th>类型</th><th>非空</th>
-            </tr></thead><tbody></tbody></table>
+            <table id="colTable">&lt;thead&gt;&lt;tr&gt;
+                &lt;th&gt;列名</th>&lt;th&gt;类型</th>&lt;th&gt;非空</th>
+            </tr></thead>&lt;tbody&gt;</tbody></table>
         </div>
 
         <div style="margin-top:16px">
@@ -2424,7 +2424,7 @@ body { font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
     </div>
 </div>
 
-<script>
+&lt;script&gt;
 let sessionId = null;
 
 async function uploadFile(input) {
@@ -2432,7 +2432,7 @@ async function uploadFile(input) {
     if (!file) return;
 
     const zone = document.getElementById('uploadZone');
-    zone.innerHTML = '<p>上传中...</p>';
+    zone.innerHTML = '&lt;p&gt;上传中...</p>';
 
     const formData = new FormData();
     formData.append('file', file);
@@ -2453,8 +2453,8 @@ async function uploadFile(input) {
         const tbody = document.querySelector('#colTable tbody');
         tbody.innerHTML = '';
         data.column_info.forEach(col => {
-            tbody.innerHTML += `<tr><td>${col.name}</td>
-                <td>${col.type}</td><td>${col.non_null}</td></tr>`;
+            tbody.innerHTML += `&lt;tr&gt;&lt;td&gt;${col.name}</td>
+                &lt;td&gt;${col.type}</td>&lt;td&gt;${col.non_null}</td></tr>`;
         });
 
         document.getElementById('dataInfo').style.display = 'block';
@@ -2463,7 +2463,7 @@ async function uploadFile(input) {
         document.getElementById('askBtn').disabled = false;
         document.getElementById('reportBtn').disabled = false;
 
-        zone.innerHTML = `<p>已加载: ${data.filename}</p>
+        zone.innerHTML = `&lt;p&gt;已加载: ${data.filename}</p>
             <p style="font-size:12px;color:#666">点击重新上传</p>
             <input type="file" id="fileInput"
                    accept=".csv,.xlsx,.xls,.json,.parquet"
@@ -2497,7 +2497,7 @@ async function askQuestion(text) {
 
         let html = '';
         if (data.code) {
-            html += `<pre>${escapeHtml(data.code)}</pre>`;
+            html += `&lt;pre&gt;${escapeHtml(data.code)}</pre>`;
         }
         if (data.success) {
             html += `<div class="result">${escapeHtml(data.output)}</div>`;
