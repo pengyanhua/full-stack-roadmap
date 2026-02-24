@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Build VitePress
 
 on:
   push:
@@ -6,12 +6,11 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      deployments: write
-    name: Deploy to Cloudflare Pages
+    name: Build VitePress
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,12 +27,3 @@ jobs:
         run: npm run docs:build
         env:
           NODE_OPTIONS: '--max-old-space-size=8192'
-
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: full-stack-roadmap
-          directory: docs/.vitepress/dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -9,7 +9,8 @@
     "docs:preview": "vitepress preview docs",
     "convert": "node scripts/convert-to-markdown.js",
     "fix": "node scripts/fix-markdown.js",
-    "security-check": "node scripts/security-check.js"
+    "security-check": "node scripts/security-check.js",
+    "deploy": "npm run docs:build && npx wrangler pages deploy docs/.vitepress/dist --project-name=full-stack-roadmap"
   },
   "keywords": [
     "full-stack",
