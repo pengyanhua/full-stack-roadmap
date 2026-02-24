@@ -20,6 +20,19 @@ function fixMarkdownContent(content, filePath) {
   let fixed = content
   let changes = []
 
+  // 常见 HTML 标签白名单，不应被转义
+  const htmlTags = new Set([
+    'div', 'span', 'p', 'a', 'br', 'hr', 'img', 'ul', 'ol', 'li',
+    'table', 'tr', 'td', 'th', 'thead', 'tbody', 'tfoot',
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+    'pre', 'code', 'blockquote', 'em', 'strong', 'b', 'i', 'u', 's',
+    'script', 'style', 'link', 'meta', 'head', 'body', 'html',
+    'form', 'input', 'button', 'select', 'option', 'textarea', 'label',
+    'section', 'article', 'nav', 'aside', 'header', 'footer', 'main',
+    'details', 'summary', 'ins', 'del', 'sup', 'sub', 'small', 'mark',
+    'video', 'audio', 'source', 'iframe', 'canvas', 'svg', 'path',
+  ])
+
   // 1. 修复代码块外的 <id> 和类似标签
   // 但不修改代码块内的内容
   const lines = content.split('\n')
@@ -42,8 +55,11 @@ function fixMarkdownContent(content, filePath) {
       const placeholderPattern = /<([a-zA-Z\u4e00-\u9fa5]+)>/g
       if (placeholderPattern.test(line)) {
         const originalLine = line
-        // 只转义非 HTML 标签的尖括号（简单判断：单个单词的占位符）
-        line = line.replace(/<([a-zA-Z\u4e00-\u9fa5]+)>/g, '&lt;$1&gt;')
+        // 只转义非 HTML 标签的尖括号（跳过已知 HTML 标签）
+        line = line.replace(/<([a-zA-Z\u4e00-\u9fa5]+)>/g, (match, tag) => {
+          if (htmlTags.has(tag.toLowerCase())) return match
+          return `&lt;${tag}&gt;`
+        })
         if (line !== originalLine) {
           changes.push(`Line ${i + 1}: 转义占位符`)
         }

@@ -189,7 +189,7 @@ javac Java/01-basics/Variables.java && java Variables
      data-ad-slot="3922057699"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-&lt;script&gt;
+<script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
@@ -201,11 +201,11 @@ javac Java/01-basics/Variables.java && java Variables
 ---
 
 <div style="text-align: center; margin-top: 40px;">
-  &lt;p&gt;⭐ 如果这个项目对你有帮助，请给一个 Star！</p>
-  &lt;p&gt;💬 有问题？欢迎在 GitHub 讨论区交流</p>
+  <p>⭐ 如果这个项目对你有帮助，请给一个 Star！</p>
+  <p>💬 有问题？欢迎在 GitHub 讨论区交流</p>
 </div>
 
-&lt;style&gt;
+<style>
 .language-grid {
   margin: 20px 0;
 }
