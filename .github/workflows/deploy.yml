@@ -44,6 +44,8 @@ jobs:
 
       - name: Build with VitePress
         run: npm run docs:build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=8192'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
