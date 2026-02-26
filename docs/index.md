@@ -47,6 +47,11 @@ features:
     details: 渐进式前端框架，从基础到高级，快速构建用户界面
     link: /vue/
 
+  - icon: 🅰️
+    title: Angular
+    details: Google 企业级前端框架，内置 DI、路由、Signals 响应式
+    link: /angular/
+
   - icon: 🗄️
     title: 数据库
     details: MySQL、PostgreSQL、Redis、Elasticsearch 等，掌握数据存储与查询优化

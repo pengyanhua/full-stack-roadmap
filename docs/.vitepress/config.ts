@@ -127,6 +127,7 @@ export default defineConfig({
         items: [
           { text: 'React', link: '/react/' },
           { text: 'Vue', link: '/vue/' },
+          { text: 'Angular', link: '/angular/' },
         ]
       },
       {
@@ -350,6 +351,23 @@ export default defineConfig({
             { text: 'Composables', link: '/vue/02-composition/composables' },
             { text: 'Router', link: '/vue/03-advanced/router' },
             { text: 'Pinia', link: '/vue/03-advanced/pinia' }
+          ]
+        }
+      ],
+
+      '/angular/': [
+        {
+          text: 'Angular 学习路径',
+          items: [
+            { text: '简介', link: '/angular/' },
+            { text: '组件基础', link: '/angular/01-basics/components' },
+            { text: '指令', link: '/angular/01-basics/directives' },
+            { text: '组件通信', link: '/angular/02-components/input_output' },
+            { text: '生命周期', link: '/angular/02-components/lifecycle' },
+            { text: '内容投影', link: '/angular/02-components/content_projection' },
+            { text: '服务与 DI', link: '/angular/03-advanced/services_di' },
+            { text: '路由', link: '/angular/03-advanced/routing' },
+            { text: 'Signals', link: '/angular/03-advanced/signals' }
           ]
         }
       ],

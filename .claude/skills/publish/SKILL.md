@@ -1,65 +1,78 @@
 ---
 name: publish
-description: 将源码转换为文档并构建 VitePress 站点。当用户说"发布"、"更新文档"、"构建文档"、"生成文档"时使用。
-argument-hint: [convert|build|preview|all]
+description: 提交代码、构建并部署站点到 Cloudflare Pages。当用户说"发布"、"部署"、"上线"、"publish"、"deploy"时使用。
+argument-hint: "commit|build|deploy|all"
 disable-model-invocation: true
 allowed-tools: Bash, Read, Glob, Grep
 ---
 
-# 发布文档
+# 发布部署
 
-将源码文件转换为 Markdown 文档，并构建 VitePress 站点。
+提交代码推送到 GitHub，构建 VitePress 站点，并手动部署到 Cloudflare Pages。
 
 ## 参数
 
 - `$ARGUMENTS` — 可选，指定操作：
-  - `convert` — 仅转换代码为 Markdown
+  - `commit` — 仅提交推送代码
   - `build` — 仅构建 VitePress
-  - `preview` — 构建并启动预览服务器
-  - `all`（默认） — 转换 + 构建
+  - `deploy` — 仅部署到 Cloudflare（需先构建）
+  - `all`（默认） — 提交 + 构建 + 部署
   - 空 — 等同于 `all`
 
 ## 执行流程
 
-### 1. convert — 代码转 Markdown
+### 1. commit — 提交推送代码
 
 ```bash
-npm run convert
+git add -A
+git commit -m "描述本次改动"
+git push
 ```
 
-这会扫描 Python, Go, Java, JavaScript, React, Vue, DataStructures 目录下的代码文件，转换为 `docs/` 下对应的 Markdown 文件。
-
-转换规则：
-- `Python/02-functions/02_closure.py` → `docs/python/02-functions/closure.md`
-- 文件名数字前缀被去除
-- 目录名转为小写
+提交前先用 `git status` 和 `git diff` 查看变更，编写准确的提交信息。
 
 ### 2. build — 构建站点
 
 ```bash
-npm run docs:build
+NODE_OPTIONS="--max-old-space-size=8192" npm run docs:build
 ```
+
+注意：项目有 370+ 个 markdown 文件，必须设置 8GB 堆内存，否则会 OOM。
 
 构建完成后检查是否有错误输出。
 
-### 3. preview — 预览站点
+### 3. deploy — 部署到 Cloudflare Pages
 
 ```bash
-npm run docs:preview
+npx wrangler pages deploy docs/.vitepress/dist --project-name=full-stack-roadmap
 ```
 
-启动本地预览服务器。
+需要已通过 `npx wrangler login` 登录 Cloudflare 账号。
+
+部署完成后会输出预览 URL，生产站点为 https://t.tecfav.com
 
 ## 执行步骤
 
 1. 根据 `$ARGUMENTS` 决定执行哪些操作（默认执行全部）
-2. 执行 `npm run convert`，报告转换结果（成功/失败文件数）
-3. 执行 `npm run docs:build`，检查构建错误
-4. 如果用户指定 `preview`，启动预览服务器
+2. **commit**: 查看变更 → 编写提交信息 → `git add` → `git commit` → `git push`
+3. **build**: 执行 `NODE_OPTIONS="--max-old-space-size=8192" npm run docs:build`，检查构建错误
+4. **deploy**: 执行 `npx wrangler pages deploy`，确认部署成功
 5. 汇总报告结果
+
+## 快捷命令
+
+一键全流程（等同于 `npm run deploy`，但包含提交推送）：
+
+```bash
+git add -A && git commit -m "消息" && git push
+NODE_OPTIONS="--max-old-space-size=8192" npm run docs:build
+npx wrangler pages deploy docs/.vitepress/dist --project-name=full-stack-roadmap
+```
 
 ## 常见问题
 
-- 如果 convert 报告某些文件失败，检查文件编码是否为 UTF-8
-- 如果 build 失败，检查 Markdown 语法错误（常见：未闭合的代码块、无效链接）
+- 如果构建 OOM，确认 `NODE_OPTIONS="--max-old-space-size=8192"` 已设置
+- 如果构建报 "Invalid end tag"，检查 `docs/index.md` 中 HTML 标签是否被 `fix-markdown.js` 错误转义
+- 如果 wrangler 部署报错未登录，先执行 `npx wrangler login`
+- 如果需要只构建不部署，用 `npm run docs:build`
 - 死链接已在 VitePress 配置中设置为忽略 (`ignoreDeadLinks: true`)
