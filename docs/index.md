@@ -52,6 +52,11 @@ features:
     details: Google 企业级前端框架，内置 DI、路由、Signals 响应式
     link: /angular/
 
+  - icon: ▲
+    title: Next.js
+    details: React 全栈框架，App Router、服务端组件、Server Actions、ISR 增量渲染
+    link: /nextjs/
+
   - icon: 🗄️
     title: 数据库
     details: MySQL、PostgreSQL、Redis、Elasticsearch 等，掌握数据存储与查询优化

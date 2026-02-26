@@ -128,6 +128,7 @@ export default defineConfig({
           { text: 'React', link: '/react/' },
           { text: 'Vue', link: '/vue/' },
           { text: 'Angular', link: '/angular/' },
+          { text: 'Next.js', link: '/nextjs/' },
         ]
       },
       {
@@ -368,6 +369,23 @@ export default defineConfig({
             { text: '服务与 DI', link: '/angular/03-advanced/services_di' },
             { text: '路由', link: '/angular/03-advanced/routing' },
             { text: 'Signals', link: '/angular/03-advanced/signals' }
+          ]
+        }
+      ],
+
+      '/nextjs/': [
+        {
+          text: 'Next.js 学习路径',
+          items: [
+            { text: '简介', link: '/nextjs/' },
+            { text: 'App Router 路由', link: '/nextjs/01-basics/app_router' },
+            { text: '服务端与客户端组件', link: '/nextjs/01-basics/server_client_components' },
+            { text: '数据获取', link: '/nextjs/02-data/data_fetching' },
+            { text: 'Server Actions', link: '/nextjs/02-data/server_actions' },
+            { text: 'Route Handlers', link: '/nextjs/02-data/route_handlers' },
+            { text: '中间件', link: '/nextjs/03-advanced/middleware' },
+            { text: '性能优化', link: '/nextjs/03-advanced/optimization' },
+            { text: '部署', link: '/nextjs/03-advanced/deployment' }
           ]
         }
       ],
