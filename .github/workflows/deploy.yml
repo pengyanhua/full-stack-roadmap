@@ -15,10 +15,10 @@ permissions:
   pages: write
   id-token: write
 
-# 只允许一个并发部署
+# 只允许一个并发部署，取消排队中的过时构建
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   # 构建任务
@@ -29,12 +29,21 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 获取所有历史记录（用于显示最后更新时间）
+          filter: 'blob:none' # treeless clone，只拉取 commit 元数据，按需获取文件内容
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+
+      - name: Cache VitePress build
+        uses: actions/cache@v4
+        with:
+          path: docs/.vitepress/cache
+          key: vitepress-${{ hashFiles('docs/**/*.md') }}
+          restore-keys: |
+            vitepress-
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

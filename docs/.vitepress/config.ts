@@ -918,7 +918,7 @@ export default defineConfig({
 
   // Markdown 配置
   markdown: {
-    lineNumbers: true, // 显示行号
+    lineNumbers: false, // 按需在代码块上用 :line-numbers 启用
     theme: {
       light: 'github-light',
       dark: 'github-dark'
